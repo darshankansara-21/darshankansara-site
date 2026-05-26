@@ -17,6 +17,9 @@ const pageDesc = description ?? site.tagline;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={pageDesc} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
@@ -82,7 +85,31 @@ const pageDesc = description ?? site.tagline;
         line-height: 1.65;
         font-size: 17px;
         -webkit-font-smoothing: antialiased;
+        position: relative;
+        min-height: 100vh;
       }
+      /* Krishna's peacock feather, subtle background mark */
+      body::before {
+        content: '';
+        position: fixed;
+        top: -40px;
+        right: -60px;
+        width: 320px;
+        height: 900px;
+        background-image: url('/peacock-feather.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: top right;
+        opacity: 0.18;
+        transform: rotate(18deg);
+        pointer-events: none;
+        z-index: 0;
+        filter: drop-shadow(0 0 24px rgba(110,168,255,0.25));
+      }
+      @media (max-width: 720px) {
+        body::before { opacity: 0.10; width: 220px; }
+      }
+      .invocation, .site-header, main, .site-footer { position: relative; z-index: 1; }
       a { color: var(--accent); text-decoration: none; }
       a:hover { text-decoration: underline; }
       h1, h2, h3 { line-height: 1.25; margin: 1.6em 0 0.6em; }
@@ -97,20 +124,20 @@ const pageDesc = description ?? site.tagline;
 
       .invocation {
         text-align: center;
-        padding: 12px 16px 10px;
+        padding: 16px 16px 14px;
         border-bottom: 1px solid var(--border);
-        background: linear-gradient(180deg, rgba(243,201,105,0.10), rgba(243,201,105,0.02));
+        background: linear-gradient(180deg, rgba(243,201,105,0.12), rgba(243,201,105,0.02));
         color: var(--accent-2);
         letter-spacing: 0.4px;
-        font-size: 1.05rem;
+        font-size: 1.5rem;
       }
       .invocation .sk {
         font-family: 'Noto Sans Devanagari', 'Mangal', serif;
         font-weight: 600;
-        margin-right: 12px;
-        text-shadow: 0 0 18px rgba(243,201,105,0.35);
+        margin-right: 14px;
+        text-shadow: 0 0 22px rgba(243,201,105,0.45);
       }
-      .invocation .sk-en { color: var(--muted); font-style: italic; font-size: 0.82rem; }
+      .invocation .sk-en { color: var(--muted); font-style: italic; font-size: 0.95rem; }
       @media (max-width: 520px) { .invocation .sk-en { display: block; margin-top: 2px; } }
 
       .site-header {
