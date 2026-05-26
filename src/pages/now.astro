@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+const updated = new Date().toISOString().slice(0, 10);
+---
+<Base title="Now" description="What I'm focused on right now.">
+  <h1>Now</h1>
+  <p class="muted">A snapshot of what I'm actively focused on. Updated {updated}.</p>
+
+  <h2>At work</h2>
+  <ul>
+    <li>Running platform reliability and operations for a business-critical Azure data platform (Synapse · Cosmos DB · Fabric).</li>
+    <li>Driving the next wave of cost optimization and automation across the platform.</li>
+    <li>Strengthening monitoring, incident response, and operational predictability as scale increases.</li>
+  </ul>
+
+  <h2>Building on the side</h2>
+  <ul>
+    <li><a href="/projects/lifelens">LifeLens AI</a> — adding GPS-based Places and a Memories tab to the photo organizer.</li>
+    <li><a href="/projects/career-intelligence">Career Intelligence</a> — getting the resume-vs-JD matcher production-ready.</li>
+    <li>Experimenting with on-device LLM workflows that can reason about messy operational data without leaving the machine.</li>
+  </ul>
+
+  <h2>Learning</h2>
+  <ul>
+    <li>How small, well-instrumented AI agents can lift the floor of operational excellence — not replace judgment, just remove the boring failure modes.</li>
+  </ul>
+
+  <p class="muted" style="margin-top:32px">
+    Inspired by Derek Sivers' <a href="https://nownownow.com/about">/now page</a> idea.
+  </p>
+</Base>

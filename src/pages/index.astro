@@ -1,0 +1,104 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { site } from '../config';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const featured = projects.slice(0, 3);
+---
+<Base>
+  <section class="hero">
+    <h1>Hi, I'm Darshan.</h1>
+    <p class="lead">{site.tagline}</p>
+    <p class="muted">{site.role} · {site.location}</p>
+  </section>
+
+  <hr />
+
+  <section>
+    <h2>What I do</h2>
+    <p>
+      I'm a Cloud, Infrastructure & Data Platform Operations Leader with <strong>{site.yearsExperience} years</strong> of experience,
+      including <strong>{site.yearsAtMicrosoft} years at Microsoft</strong>. Today I lead a <strong>40–45 person global team</strong>
+      running the reliability, security, and operations of a business-critical Azure data platform built on
+      <strong>Synapse, Cosmos DB, and Fabric</strong>.
+    </p>
+    <p>
+      My career spans mission-critical datacenter operations, cloud infrastructure, and modern data platforms.
+      I'm known for running complex systems calmly — and for using <strong>automation and AI-enabled operational insight</strong>
+      to make platforms more stable, more predictable, and meaningfully cheaper to run.
+    </p>
+
+    <h3 style="margin-top:28px">Core strengths</h3>
+    <div class="tags" style="margin-bottom:8px">
+      <span class="tag">Cloud &amp; Data Platform Operations</span>
+      <span class="tag">Datacenter Operations &amp; Critical Environments</span>
+      <span class="tag">Platform Reliability &amp; Operational Readiness</span>
+      <span class="tag">Operational Excellence (Lean / Kaizen)</span>
+      <span class="tag">Security, Compliance &amp; Cost Optimization</span>
+      <span class="tag">Global Team Leadership</span>
+      <span class="tag">Cross-Functional Execution</span>
+    </div>
+
+    <h3 style="margin-top:24px">Platforms &amp; tools I work with</h3>
+    <div class="tags" style="margin-bottom:8px">
+      <span class="tag">Azure</span>
+      <span class="tag">Synapse</span>
+      <span class="tag">Cosmos DB</span>
+      <span class="tag">Microsoft Fabric</span>
+      <span class="tag">Kusto / KQL</span>
+      <span class="tag">Python</span>
+      <span class="tag">LLMs &amp; AI agents</span>
+      <span class="tag">ITIL · PMP · PMI-ACP</span>
+    </div>
+  </section>
+
+  <hr />
+
+  <section>
+    <h2>Where I am now</h2>
+    <div class="card">
+      <h3>Senior Manager, Platform Reliability &amp; Operations (Data Platforms)</h3>
+      <p class="tagline">Microsoft · Redmond, WA · Sep 2022 – Present</p>
+      <p>
+        Lead infrastructure, reliability, security, and operations for Microsoft's Cloud Marketing Data Platform —
+        a business-critical platform supporting global marketing and customer-lifecycle workloads. Accountable for 24×7
+        platform reliability and operational readiness across a 40–45 person global team spanning infrastructure
+        engineering, data operations, and program management.
+      </p>
+      <p class="muted" style="margin:0">
+        Recent: drove platform optimization and modernization initiatives that delivered <strong>$1M+ in cost savings</strong>
+        through capacity optimization, automation, and elimination of inefficiencies.
+      </p>
+      <p style="margin-top:14px"><a href="/experience">Full experience &amp; certifications →</a></p>
+    </div>
+  </section>
+
+  <hr />
+
+  <section>
+    <h2>Side projects — applying AI to my own problems</h2>
+    <p class="muted">
+      Outside of the day job, I build tools that bring the same operational discipline to personal data —
+      and let me experiment with on-device AI. A few of the active ones:
+    </p>
+    {featured.map((p) => (
+      <a class="card" href={`/projects/${p.slug}`}>
+        <h3>{p.data.title}</h3>
+        <p class="tagline">{p.data.tagline}</p>
+        <div class="tags">{p.data.tags.map((t) => <span class="tag">{t}</span>)}</div>
+      </a>
+    ))}
+    <p style="margin-top:8px"><a href="/projects">See all projects →</a></p>
+  </section>
+
+  <hr />
+
+  <section>
+    <h2>Get in touch</h2>
+    <p>
+      Best way to reach me is <a href={`mailto:${site.email}`}>{site.email}</a>.
+      I'm also on <a href={site.linkedin}>LinkedIn</a>{site.github ? <> and <a href={site.github}>GitHub</a></> : null}.
+    </p>
+  </section>
+</Base>
