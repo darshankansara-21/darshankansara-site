@@ -25,8 +25,10 @@ const pageDesc = description ?? site.tagline;
   </head>
   <body>
     <div class="invocation" aria-label="Shree Krushna Sadaa Sahaayate">
+      <img src="/peacock-feather.svg" alt="" class="feather feather-left" aria-hidden="true" />
       <span class="sk">॥ श्री कृष्ण सदा सहायते ॥</span>
       <span class="sk-en">Shree Krushna Sadaa Sahaayate</span>
+      <img src="/peacock-feather.svg" alt="" class="feather feather-right" aria-hidden="true" />
     </div>
     <header class="site-header">
       <a href="/" class="brand">{site.name}</a>
@@ -123,21 +125,39 @@ const pageDesc = description ?? site.tagline;
       hr { border: 0; border-top: 1px solid var(--border); margin: 32px 0; }
 
       .invocation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
         text-align: center;
-        padding: 16px 16px 14px;
+        padding: 10px 16px 9px;
         border-bottom: 1px solid var(--border);
         background: linear-gradient(180deg, rgba(243,201,105,0.12), rgba(243,201,105,0.02));
         color: var(--accent-2);
         letter-spacing: 0.4px;
-        font-size: 1.5rem;
+        font-size: 1.05rem;
       }
+      .invocation .feather {
+        width: 18px;
+        height: auto;
+        opacity: 0.85;
+        flex-shrink: 0;
+        filter: drop-shadow(0 0 6px rgba(110,168,255,0.4));
+      }
+      .invocation .feather-left { transform: rotate(-18deg); }
+      .invocation .feather-right { transform: rotate(18deg); }
       .invocation .sk {
         font-family: 'Noto Sans Devanagari', 'Mangal', serif;
         font-weight: 600;
-        margin-right: 14px;
-        text-shadow: 0 0 22px rgba(243,201,105,0.45);
+        margin-right: 8px;
+        text-shadow: 0 0 16px rgba(243,201,105,0.4);
       }
-      .invocation .sk-en { color: var(--muted); font-style: italic; font-size: 0.95rem; }
+      .invocation .sk-en { color: var(--muted); font-style: italic; font-size: 0.78rem; }
+      @media (max-width: 520px) {
+        .invocation { font-size: 0.95rem; gap: 6px; }
+        .invocation .feather { width: 14px; }
+        .invocation .sk-en { display: block; margin-top: 2px; font-size: 0.72rem; }
+      }
       @media (max-width: 520px) { .invocation .sk-en { display: block; margin-top: 2px; } }
 
       .site-header {
