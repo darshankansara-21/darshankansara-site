@@ -138,14 +138,15 @@ const pageDesc = description ?? site.tagline;
         font-size: 1.05rem;
       }
       .invocation .feather {
-        width: 18px;
+        width: 22px;
         height: auto;
-        opacity: 0.85;
+        opacity: 0.9;
         flex-shrink: 0;
         filter: drop-shadow(0 0 6px rgba(110,168,255,0.4));
       }
-      .invocation .feather-left { transform: rotate(-18deg); }
-      .invocation .feather-right { transform: rotate(18deg); }
+      /* Left feather mirrors right so eye/tip point inward toward the text */
+      .invocation .feather-left { transform: scaleX(-1); }
+      .invocation .feather-right { transform: none; }
       .invocation .sk {
         font-family: 'Noto Sans Devanagari', 'Mangal', serif;
         font-weight: 600;
@@ -155,7 +156,7 @@ const pageDesc = description ?? site.tagline;
       .invocation .sk-en { color: var(--muted); font-style: italic; font-size: 0.78rem; }
       @media (max-width: 520px) {
         .invocation { font-size: 0.95rem; gap: 6px; }
-        .invocation .feather { width: 14px; }
+        .invocation .feather { width: 16px; }
         .invocation .sk-en { display: block; margin-top: 2px; font-size: 0.72rem; }
       }
       @media (max-width: 520px) { .invocation .sk-en { display: block; margin-top: 2px; } }
