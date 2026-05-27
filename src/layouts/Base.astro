@@ -128,21 +128,21 @@ const pageDesc = description ?? site.tagline;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 8px;
         text-align: center;
-        padding: 8px 16px 7px;
+        padding: 5px 16px 4px;
         border-bottom: 1px solid var(--border);
         background: linear-gradient(180deg, rgba(243,201,105,0.10), rgba(243,201,105,0.02));
         color: var(--accent-2);
         letter-spacing: 0.3px;
-        font-size: 0.85rem;
+        font-size: 0.55rem;
       }
       .invocation .feather {
-        width: 22px;
+        width: 14px;
         height: auto;
         opacity: 0.9;
         flex-shrink: 0;
-        filter: drop-shadow(0 0 6px rgba(110,168,255,0.4));
+        filter: drop-shadow(0 0 4px rgba(110,168,255,0.4));
       }
       /* Left feather mirrors right so eye/tip point inward toward the text */
       .invocation .feather-left { transform: scaleX(-1); }
@@ -150,14 +150,14 @@ const pageDesc = description ?? site.tagline;
       .invocation .sk {
         font-family: 'Noto Sans Devanagari', 'Mangal', serif;
         font-weight: 600;
-        margin-right: 6px;
-        text-shadow: 0 0 12px rgba(243,201,105,0.35);
+        margin-right: 5px;
+        text-shadow: 0 0 8px rgba(243,201,105,0.3);
       }
-      .invocation .sk-en { color: var(--muted); font-style: italic; font-size: 0.68rem; }
+      .invocation .sk-en { color: var(--muted); font-style: italic; font-size: 0.48rem; }
       @media (max-width: 520px) {
-        .invocation { font-size: 0.78rem; gap: 6px; }
-        .invocation .feather { width: 16px; }
-        .invocation .sk-en { display: block; margin-top: 1px; font-size: 0.62rem; }
+        .invocation { font-size: 0.5rem; gap: 5px; }
+        .invocation .feather { width: 11px; }
+        .invocation .sk-en { display: block; margin-top: 1px; font-size: 0.44rem; }
       }
       @media (max-width: 520px) { .invocation .sk-en { display: block; margin-top: 2px; } }
 
