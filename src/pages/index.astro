@@ -1,104 +1,632 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getCollection } from 'astro:content';
 import { site } from '../config';
-
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
-const featured = projects.slice(0, 3);
 ---
 <Base>
-  <section class="hero">
-    <h1>Hi, I'm Darshan.</h1>
-    <p class="lead">{site.tagline}</p>
-    <p class="muted">{site.role} · {site.location}</p>
+  <!-- =========================================================
+       HERO
+       Spec: headline + subheadline + credibility. No "Hi, I'm".
+       Telemetry-inspired hairline graph anchors the lower edge.
+       ========================================================= -->
+  <section class="hero" aria-labelledby="hero-headline">
+    <svg class="telemetry" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="telemetryFade" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%"   stop-color="var(--azure)" stop-opacity="0" />
+          <stop offset="20%"  stop-color="var(--azure)" stop-opacity="0.55" />
+          <stop offset="80%"  stop-color="var(--accent)" stop-opacity="0.55" />
+          <stop offset="100%" stop-color="var(--accent)" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <!-- Hairline baseline -->
+      <line x1="0" y1="100" x2="1200" y2="100" stroke="currentColor" stroke-opacity="0.06" />
+      <!-- Telemetry trace: low-frequency wave with a small incident bump -->
+      <path d="M0,92 L120,88 L210,90 L300,82 L380,86 L470,78 L540,84 L610,74 L660,72 L690,46 L720,72 L760,80 L860,76 L960,82 L1050,78 L1200,82"
+            fill="none"
+            stroke="url(#telemetryFade)"
+            stroke-width="1.25"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+      <!-- Node ticks -->
+      <g stroke-opacity="0.18" stroke="currentColor">
+        <line x1="0"    y1="98" x2="0"    y2="102" />
+        <line x1="300"  y1="98" x2="300"  y2="102" />
+        <line x1="600"  y1="98" x2="600"  y2="102" />
+        <line x1="900"  y1="98" x2="900"  y2="102" />
+        <line x1="1200" y1="98" x2="1200" y2="102" />
+      </g>
+    </svg>
+
+    <div class="container hero-inner">
+      <div class="eyebrow reveal">
+        <span class="eyebrow-dot" aria-hidden="true"></span>
+        <span>{site.eyebrow}</span>
+      </div>
+      <h1 id="hero-headline" class="headline reveal">{site.headline}</h1>
+      <p class="sub reveal">{site.subheadline}</p>
+      <p class="cred reveal">{site.credibility}</p>
+    </div>
   </section>
 
-  <hr />
-
-  <section>
-    <h2>What I do</h2>
-    <p>
-      I'm a Cloud, Infrastructure & Data Platform Operations Leader with <strong>{site.yearsExperience} years</strong> of experience,
-      including <strong>{site.yearsAtMicrosoft} years at Microsoft</strong>. Today I lead a <strong>40–45 person global team</strong>
-      running the reliability, security, and operations of a business-critical Azure data platform built on
-      <strong>Synapse, Cosmos DB, and Fabric</strong>.
-    </p>
-    <p>
-      My career spans mission-critical datacenter operations, cloud infrastructure, and modern data platforms.
-      I'm known for running complex systems calmly — and for using <strong>automation and AI-enabled operational insight</strong>
-      to make platforms more stable, more predictable, and meaningfully cheaper to run.
-    </p>
-
-    <h3 style="margin-top:28px">Core strengths</h3>
-    <div class="tags" style="margin-bottom:8px">
-      <span class="tag">Cloud &amp; Data Platform Operations</span>
-      <span class="tag">Datacenter Operations &amp; Critical Environments</span>
-      <span class="tag">Platform Reliability &amp; Operational Readiness</span>
-      <span class="tag">Operational Excellence (Lean / Kaizen)</span>
-      <span class="tag">Security, Compliance &amp; Cost Optimization</span>
-      <span class="tag">Global Team Leadership</span>
-      <span class="tag">Cross-Functional Execution</span>
-    </div>
-
-    <h3 style="margin-top:24px">Platforms &amp; tools I work with</h3>
-    <div class="tags" style="margin-bottom:8px">
-      <span class="tag">Azure</span>
-      <span class="tag">Synapse</span>
-      <span class="tag">Cosmos DB</span>
-      <span class="tag">Microsoft Fabric</span>
-      <span class="tag">Kusto / KQL</span>
-      <span class="tag">Python</span>
-      <span class="tag">LLMs &amp; AI agents</span>
-      <span class="tag">ITIL · PMP · PMI-ACP</span>
+  <!-- =========================================================
+       IMPACT STRIP
+       Editorial metrics. Tabular numerals, hairline columns.
+       ========================================================= -->
+  <section id="impact" class="metrics" aria-label="Impact at a glance">
+    <div class="container">
+      <div class="metrics-grid">
+        {site.metrics.map((m) => (
+          <div class="metric reveal">
+            <div class="metric-value">{m.value}</div>
+            <div class="metric-label">{m.label}</div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
-  <hr />
+  <!-- =========================================================
+       SIGNATURE MOMENT
+       The emotional centre. Full-bleed, single line, generous air.
+       ========================================================= -->
+  <section class="signature" aria-label="Signature">
+    <div class="container signature-inner reveal">
+      <span class="sig-mark" aria-hidden="true">
+        <svg viewBox="0 0 80 8" preserveAspectRatio="none">
+          <line x1="0" y1="4" x2="80" y2="4" stroke="currentColor" stroke-width="0.75" />
+          <circle cx="40" cy="4" r="1.6" fill="currentColor" />
+        </svg>
+      </span>
+      <p class="sig-line">{site.signature.line}</p>
+      <p class="sig-body">{site.signature.body}</p>
+    </div>
+  </section>
 
-  <section>
-    <h2>Where I am now</h2>
-    <div class="card">
-      <h3>Senior Manager, Platform Reliability &amp; Operations (Data Platforms)</h3>
-      <p class="tagline">Microsoft · Redmond, WA · Sep 2022 – Present</p>
-      <p>
-        Lead infrastructure, reliability, security, and operations for Microsoft's Cloud Marketing Data Platform —
-        a business-critical platform supporting global marketing and customer-lifecycle workloads. Accountable for 24×7
-        platform reliability and operational readiness across a 40–45 person global team spanning infrastructure
-        engineering, data operations, and program management.
+  <!-- =========================================================
+       EXECUTIVE IMPACT
+       Outcomes, not activity. Editorial grid with hairline rules.
+       ========================================================= -->
+  <section id="outcomes" class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-kicker">Executive impact</span>
+        <h2 class="section-title">Outcomes, not activity.</h2>
+        <p class="section-sub">A leader is hired to move numbers and reduce risk. These are the ones I move.</p>
+      </div>
+
+      <div class="outcomes">
+        {site.outcomes.map((o) => (
+          <article class="outcome reveal">
+            <div class="outcome-kicker">{o.kicker}</div>
+            <h3 class="outcome-title">{o.title}</h3>
+            <p class="outcome-body">{o.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- =========================================================
+       CAREER JOURNEY
+       Telemetry-inspired horizontal timeline.
+       Datacenter -> Infrastructure -> Cloud -> Azure -> Data -> AI.
+       ========================================================= -->
+  <section id="journey" class="section section-journey">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-kicker">Career journey</span>
+        <h2 class="section-title">From datacenter floor to AI-powered operations.</h2>
+        <p class="section-sub">Twenty-five years tracing the arc of cloud \u2014 building, operating, and now reshaping it with AI.</p>
+      </div>
+
+      <ol class="journey reveal" aria-label="Career timeline">
+        {site.journey.map((s, i) => (
+          <li class="station" style={`--i:${i}`}>
+            <span class="station-tick" aria-hidden="true"></span>
+            <span class="station-year">{s.year}</span>
+            <span class="station-label">{s.label}</span>
+            <span class="station-note">{s.note}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- =========================================================
+       AI & OPERATIONS
+       Real capabilities. Six named systems, not bullet points.
+       ========================================================= -->
+  <section id="ai" class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-kicker">{site.ai.kicker}</span>
+        <h2 class="section-title">{site.ai.headline}</h2>
+        <p class="section-sub">{site.ai.body}</p>
+      </div>
+
+      <div class="capabilities">
+        {site.ai.capabilities.map((c, i) => (
+          <article class="capability reveal">
+            <div class="cap-id">{String(i + 1).padStart(2, '0')}</div>
+            <h3 class="cap-name">{c.name}</h3>
+            <p class="cap-body">{c.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- =========================================================
+       WRITING
+       Editorial like HBR / Stripe / Linear.
+       ========================================================= -->
+  <section id="writing" class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-kicker">Writing</span>
+        <h2 class="section-title">On reliability, AI, and calm leadership.</h2>
+      </div>
+      <div class="writing-list">
+        {site.writing.map((w) => (
+          <a class="post reveal" href={w.href}>
+            <div class="post-date">{w.date}</div>
+            <div class="post-body">
+              <h3 class="post-title">{w.title}</h3>
+              <p class="post-dek">{w.dek}</p>
+            </div>
+            <div class="post-arrow" aria-hidden="true">&rarr;</div>
+          </a>
+        ))}
+      </div>
+      <p class="section-foot"><a href="/writing">All writing &rarr;</a></p>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- =========================================================
+       CONTACT
+       Position from strength. No availability language.
+       ========================================================= -->
+  <section id="contact" class="section section-contact">
+    <div class="container reveal">
+      <span class="section-kicker">Contact</span>
+      <h2 class="section-title contact-title">{site.contact.headline}</h2>
+      <p class="contact-sub">{site.contact.sub}</p>
+      <p class="contact-meta">
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a href={site.linkedin}>LinkedIn</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a href={site.github}>GitHub</a>
       </p>
-      <p class="muted" style="margin:0">
-        Recent: drove platform optimization and modernization initiatives that delivered <strong>$1M+ in cost savings</strong>
-        through capacity optimization, automation, and elimination of inefficiencies.
-      </p>
-      <p style="margin-top:14px"><a href="/experience">Full experience &amp; certifications →</a></p>
     </div>
   </section>
 
-  <hr />
+  <style>
+    /* ============ HERO ============ */
+    .hero {
+      position: relative;
+      padding: 108px 0 96px;
+      border-bottom: 1px solid var(--rule);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .telemetry {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      width: 100%; height: 120px;
+      color: var(--platinum);
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-inner { max-width: 960px; position: relative; z-index: 1; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.16em;
+      margin-bottom: 36px;
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--azure);
+      box-shadow: 0 0 12px var(--azure);
+      animation: pulse 3.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.55; transform: scale(0.85); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .eyebrow-dot { animation: none; }
+    }
+    .headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6.4vw, 4.4rem);
+      font-weight: 600;
+      letter-spacing: -0.028em;
+      line-height: 1.04;
+      color: var(--text-strong);
+      max-width: 16ch;
+      margin: 0 0 28px;
+      text-wrap: balance;
+    }
+    .sub {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+      line-height: 1.42;
+      color: var(--platinum);
+      max-width: 56ch;
+      margin: 0 0 22px;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+    }
+    .cred {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--muted);
+      max-width: 70ch;
+      margin: 0;
+      line-height: 1.65;
+      letter-spacing: 0.01em;
+    }
 
-  <section>
-    <h2>Side projects — applying AI to my own problems</h2>
-    <p class="muted">
-      Outside of the day job, I build tools that bring the same operational discipline to personal data —
-      and let me experiment with on-device AI. A few of the active ones:
-    </p>
-    {featured.map((p) => (
-      <a class="card" href={`/projects/${p.slug}`}>
-        <h3>{p.data.title}</h3>
-        <p class="tagline">{p.data.tagline}</p>
-        <div class="tags">{p.data.tags.map((t) => <span class="tag">{t}</span>)}</div>
-      </a>
-    ))}
-    <p style="margin-top:8px"><a href="/projects">See all projects →</a></p>
-  </section>
+    /* ============ METRICS ============ */
+    .metrics { padding: 0; border-bottom: 1px solid var(--rule); }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .metric {
+      padding: 34px 26px;
+      border-left: 1px solid var(--rule);
+      min-height: 132px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: background .25s ease;
+    }
+    .metric:first-child { border-left: 0; }
+    .metric:hover { background: var(--surface); }
+    .metric-value {
+      font-family: var(--font-display);
+      font-feature-settings: 'tnum';
+      font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+      font-weight: 600; letter-spacing: -0.022em;
+      color: var(--text-strong);
+    }
+    .metric-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.12em;
+      line-height: 1.45;
+      margin-top: 14px;
+    }
+    @media (max-width: 880px) {
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .metric:nth-child(odd) { border-left: 0; }
+      .metric { border-top: 1px solid var(--rule); }
+      .metric:nth-child(-n+2) { border-top: 0; }
+    }
+    @media (max-width: 480px) {
+      .metric { padding: 24px 18px; min-height: 108px; }
+    }
 
-  <hr />
+    /* ============ SIGNATURE MOMENT ============ */
+    .signature {
+      background: var(--bg-deep);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 140px 0 144px;
+      position: relative;
+      overflow: hidden;
+    }
+    .signature::before,
+    .signature::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--accent-rule) 20%,
+        var(--accent-rule) 80%,
+        transparent 100%);
+      opacity: 0.6;
+    }
+    .signature::before { top: 0; }
+    .signature::after  { bottom: 0; }
+    .signature-inner {
+      max-width: 900px; text-align: center;
+      position: relative; z-index: 1;
+    }
+    .sig-mark {
+      display: inline-block;
+      width: 80px; height: 8px;
+      color: var(--accent);
+      opacity: 0.7;
+      margin-bottom: 44px;
+    }
+    .sig-line {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5.6vw, 3.6rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text-strong);
+      margin: 0 0 36px;
+      text-wrap: balance;
+    }
+    .sig-body {
+      font-size: clamp(1rem, 1.4vw, 1.12rem);
+      color: var(--platinum);
+      line-height: 1.62;
+      max-width: 52ch;
+      margin: 0 auto;
+    }
 
-  <section>
-    <h2>Get in touch</h2>
-    <p>
-      Best way to reach me is <a href={`mailto:${site.email}`}>{site.email}</a>.
-      I'm also on <a href={site.linkedin}>LinkedIn</a>{site.github ? <> and <a href={site.github}>GitHub</a></> : null}.
-    </p>
-  </section>
+    /* ============ SECTIONS ============ */
+    .section { padding: 110px 0; }
+    .section-head { margin-bottom: 56px; max-width: 720px; }
+    .section-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.16em;
+      display: block; margin-bottom: 18px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+      font-weight: 600; letter-spacing: -0.025em;
+      color: var(--text-strong);
+      margin: 0 0 14px;
+      line-height: 1.16;
+      text-wrap: balance;
+    }
+    .section-sub {
+      color: var(--platinum); margin: 0; max-width: 60ch;
+      font-size: 1.02rem; line-height: 1.55;
+    }
+    .section-foot { margin-top: 32px; font-size: 0.9rem; }
+    .section-foot a { color: var(--accent); }
+    .section-foot a:hover { color: var(--text-strong); }
+
+    /* ============ OUTCOMES ============ */
+    .outcomes {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid var(--rule);
+      border-left: 1px solid var(--rule);
+    }
+    .outcome {
+      padding: 36px 32px 40px;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      background: var(--bg);
+      transition: background .2s, border-color .2s;
+      position: relative;
+    }
+    .outcome::after {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width .35s ease;
+    }
+    .outcome:hover { background: var(--surface); }
+    .outcome:hover::after { width: 100%; }
+    .outcome-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.18em;
+      margin-bottom: 18px;
+    }
+    .outcome-title {
+      font-size: 1.2rem; font-weight: 600;
+      color: var(--text-strong);
+      margin: 0 0 12px;
+      letter-spacing: -0.012em;
+      line-height: 1.3;
+    }
+    .outcome-body {
+      color: var(--platinum); margin: 0;
+      font-size: 0.96rem; line-height: 1.58;
+    }
+    @media (max-width: 720px) { .outcomes { grid-template-columns: 1fr; } }
+
+    /* ============ JOURNEY TIMELINE ============ */
+    .section-journey { background:
+      linear-gradient(180deg, transparent 0%, rgba(90,169,255,0.025) 50%, transparent 100%);
+    }
+    .journey {
+      list-style: none; padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--rule);
+      position: relative;
+    }
+    .journey::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg,
+        var(--azure) 0%,
+        var(--azure) 14%,
+        var(--accent) 86%,
+        var(--accent) 100%);
+      opacity: 0.45;
+    }
+    .station {
+      position: relative;
+      padding: 28px 18px 22px;
+      border-right: 1px solid var(--rule);
+      display: flex; flex-direction: column; gap: 8px;
+      min-height: 170px;
+    }
+    .station:last-child { border-right: 0; }
+    .station-tick {
+      position: absolute;
+      top: -4px; left: 18px;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1.5px solid var(--azure);
+      transition: background .25s, border-color .25s, box-shadow .25s;
+    }
+    .station:nth-child(n+5) .station-tick { border-color: var(--accent); }
+    .station:hover .station-tick {
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+    .station-year {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .station-label {
+      font-family: var(--font-display);
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text-strong);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+    .station-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.45;
+      margin-top: 4px;
+    }
+    @media (max-width: 980px) {
+      .journey { grid-template-columns: repeat(2, 1fr); }
+      .station { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); min-height: 0; }
+      .station:nth-child(2n) { border-right: 0; }
+    }
+    @media (max-width: 520px) {
+      .journey { grid-template-columns: 1fr; }
+      .station { border-right: 0; }
+    }
+
+    /* ============ AI CAPABILITIES ============ */
+    .capabilities {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--rule);
+      border-left: 1px solid var(--rule);
+    }
+    .capability {
+      padding: 32px 28px 36px;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      transition: background .2s;
+    }
+    .capability:hover { background: var(--surface); }
+    .cap-id {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--azure);
+      letter-spacing: 0.16em;
+      margin-bottom: 18px;
+    }
+    .cap-name {
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--text-strong);
+      margin: 0 0 10px;
+      letter-spacing: -0.01em;
+    }
+    .cap-body {
+      color: var(--platinum);
+      margin: 0;
+      font-size: 0.93rem;
+      line-height: 1.6;
+    }
+    @media (max-width: 880px) { .capabilities { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .capabilities { grid-template-columns: 1fr; } }
+
+    /* ============ WRITING ============ */
+    .writing-list { border-top: 1px solid var(--rule); }
+    .post {
+      display: grid;
+      grid-template-columns: 90px 1fr 32px;
+      gap: 28px; align-items: start;
+      padding: 28px 8px;
+      border-bottom: 1px solid var(--rule);
+      color: var(--text);
+      transition: background .15s, padding .15s;
+      margin: 0 -8px;
+    }
+    .post:hover {
+      color: var(--text);
+      background: var(--surface);
+    }
+    .post-date {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      padding-top: 4px;
+    }
+    .post-title {
+      font-size: 1.14rem;
+      font-weight: 600;
+      color: var(--text-strong);
+      margin: 0 0 6px;
+      letter-spacing: -0.012em;
+    }
+    .post-dek {
+      color: var(--platinum);
+      margin: 0;
+      font-size: 0.94rem;
+      line-height: 1.5;
+    }
+    .post-arrow {
+      font-size: 1.1rem; color: var(--muted);
+      padding-top: 4px; text-align: right;
+      transition: transform .2s, color .2s;
+    }
+    .post:hover .post-arrow { color: var(--accent); transform: translateX(6px); }
+    @media (max-width: 560px) {
+      .post { grid-template-columns: 1fr; gap: 6px; padding: 22px 8px; }
+      .post-arrow { display: none; }
+    }
+
+    /* ============ CONTACT ============ */
+    .section-contact { padding: 110px 0 56px; }
+    .contact-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      max-width: 30ch;
+      line-height: 1.26;
+      margin-bottom: 18px;
+    }
+    .contact-sub {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+    }
+    .contact-meta {
+      font-size: 0.98rem; color: var(--muted);
+      display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+    }
+    .contact-meta a { color: var(--text-strong); }
+    .contact-meta a:hover { color: var(--accent); }
+    .contact-meta .sep { color: var(--dim); }
+  </style>
 </Base>
