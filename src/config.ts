@@ -95,10 +95,11 @@ export const site = {
   },
 
   // ---------- WRITING ----------
+  // Editorial preview. Pieces show up here once they hold up to review.
   writing: [
-    { date: '2026', title: 'Reliability is a product, not a tax.',           dek: 'Why operational excellence belongs on the roadmap \u2014 with owners and KPIs \u2014 not buried in overhead.', href: '/writing' },
-    { date: '2026', title: 'AI in operations: where it actually saves time.', dek: 'A working list of LLM use cases that have survived production contact in a Microsoft data platform.',          href: '/writing' },
-    { date: '2025', title: 'Calm leadership in a 24x7 platform.',             dek: 'Notes on running global on-call teams without burning them out \u2014 or losing pager discipline.',              href: '/writing' },
+    { date: 'Soon', title: 'Reliability is a product, not a tax.',           dek: 'Why operational excellence belongs on the roadmap \u2014 with owners and KPIs \u2014 not buried in overhead.', href: '/writing' },
+    { date: 'Soon', title: 'AI in operations: where it actually saves time.', dek: 'A working list of LLM use cases that have survived production contact in a Microsoft data platform.',          href: '/writing' },
+    { date: 'Soon', title: 'Calm leadership in a 24x7 platform.',             dek: 'Notes on running global on-call teams without burning them out \u2014 or losing pager discipline.',              href: '/writing' },
   ],
 
   // ---------- CONTACT ----------
