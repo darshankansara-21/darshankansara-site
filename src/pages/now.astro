@@ -1,31 +1,35 @@
 ---
 import Base from '../layouts/Base.astro';
-const updated = new Date().toISOString().slice(0, 10);
 ---
-<Base title="Now" description="What I'm focused on right now.">
-  <h1>Now</h1>
-  <p class="muted">A snapshot of what I'm actively focused on. Updated {updated}.</p>
+<Base title="Now" description="The systems, products, and questions receiving Darshan Kansara's attention now.">
+    <header class="now-hero">
+      <p class="eyebrow">Now</p>
+      <h1>What has my attention.</h1>
+      <p>A current snapshot, kept deliberately short.</p>
+    </header>
 
-  <h2>At work</h2>
-  <ul>
-    <li>Running platform reliability and operations for a business-critical Azure data platform (Synapse · Cosmos DB · Fabric).</li>
-    <li>Driving the next wave of cost optimization and automation across the platform.</li>
-    <li>Strengthening monitoring, incident response, and operational predictability as scale increases.</li>
-  </ul>
+    <div class="focus-list">
+      <section>
+        <div class="focus-index"><span>01</span><span>Operating</span></div>
+        <div><h2>Making a critical data platform calmer to run.</h2><p>Platform reliability and operations across Azure Synapse, Cosmos DB, and Fabric, with current attention on cost optimization, automation, monitoring, and more predictable incident response.</p></div>
+      </section>
+      <section>
+        <div class="focus-index"><span>02</span><span>Shipped + refining</span></div>
+        <div><h2>Building products that make uncertain decisions safer.</h2><p><a href="/lifelens">LifeLens</a> is live on Android and on the web, helping people inspect photo clutter while keeping deletion under their control. <a href="/applyready">ApplyReady</a> is live as an honest resume-to-role analysis and document workspace. Both are being refined through use, not promises.</p></div>
+      </section>
+      <section>
+        <div class="focus-index"><span>03</span><span>Learning</span></div>
+        <div><h2>Finding the right boundary for operational AI.</h2><p>How small, instrumented agents can surface evidence, remove repetitive failure modes, and improve response without pretending that judgment is automatable.</p></div>
+      </section>
+    </div>
 
-  <h2>Building on the side</h2>
-  <ul>
-    <li><a href="/projects/lifelens">LifeLens AI</a> — adding GPS-based Places and a Memories tab to the photo organizer.</li>
-    <li><a href="/projects/career-intelligence">Career Intelligence</a> — getting the resume-vs-JD matcher production-ready.</li>
-    <li>Experimenting with on-device LLM workflows that can reason about messy operational data without leaving the machine.</li>
-  </ul>
-
-  <h2>Learning</h2>
-  <ul>
-    <li>How small, well-instrumented AI agents can lift the floor of operational excellence — not replace judgment, just remove the boring failure modes.</li>
-  </ul>
-
-  <p class="muted" style="margin-top:32px">
-    Inspired by Derek Sivers' <a href="https://nownownow.com/about">/now page</a> idea.
-  </p>
+    <footer class="now-note"><p>This page follows the <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">/now page <span aria-hidden="true">&nearr;</span></a> idea: current attention, not a permanent biography.</p><a href="/contact">Start a conversation <span aria-hidden="true">&rarr;</span></a></footer>
+  <style>
+    main{background:var(--paper)}.now-hero{padding:clamp(68px,8vw,96px) max(var(--pad),calc((100vw - var(--max))/2));background:var(--ink);color:#fff;display:grid;grid-template-columns:1fr .7fr;gap:60px;align-items:end}.now-hero>*{margin:0}.eyebrow{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:#7ebaff}.now-hero h1{font-size:clamp(3.1rem,5.2vw,5rem);line-height:.96;letter-spacing:-.04em;color:#fff;max-width:11ch;margin:22px 0 0}.now-hero>p:last-child{font-family:var(--font-display);font-size:clamp(1.08rem,1.7vw,1.28rem);color:#aebdd0}.focus-list{width:min(var(--max),calc(100% - 2 * var(--pad)));margin:auto}.focus-list section{display:grid;grid-template-columns:190px 1fr;gap:clamp(34px,7vw,96px);padding:clamp(54px,6vw,72px) 0;border-bottom:1px solid var(--line)}.focus-index{display:flex;gap:14px;font-family:var(--font-mono);font-size:.64rem;text-transform:uppercase;color:var(--muted);padding-top:6px}.focus-index span:first-child{color:var(--azure)}.focus-list section>div:last-child{max-width:830px}.focus-list h2{font-size:clamp(1.8rem,3.1vw,2.85rem);line-height:1.08;letter-spacing:-.03em;margin:0 0 20px}.focus-list p{font-size:1.02rem;color:var(--muted);max-width:66ch}.focus-list a{color:#245b98;font-weight:700}.now-note{padding:46px max(var(--pad),calc((100vw - var(--max))/2));background:var(--white);display:flex;justify-content:space-between;align-items:center;gap:40px}.now-note p{margin:0;color:var(--muted)}.now-note>a{color:#245b98;font-weight:700;white-space:nowrap}@media(max-width:720px){.now-hero{grid-template-columns:1fr;gap:24px}.focus-list section{grid-template-columns:1fr;gap:22px}.focus-index{padding:0}.now-note{align-items:flex-start;flex-direction:column}}
+  </style>
+  <style>
+    :global(body),main{background:var(--ink);color:var(--text)}.now-hero{min-height:56vh;background:transparent;color:var(--text);border-bottom:1px solid var(--line)}.eyebrow{color:var(--gold);letter-spacing:.08em}.now-hero h1{color:var(--paper);font-size:clamp(3.5rem,7vw,7rem);font-weight:400;letter-spacing:0;line-height:.87}.now-hero>p:last-child{font-family:var(--font-sans);color:var(--muted)}
+    .focus-list section{grid-template-columns:var(--rail) 1fr;border-color:var(--line);padding:clamp(58px,7vw,92px) 0}.focus-index{color:var(--dim)}.focus-index span:first-child{color:var(--gold)}.focus-list h2{color:var(--paper);font-weight:400;letter-spacing:0}.focus-list p{color:var(--muted)}.focus-list a,.now-note>a{color:var(--azure-bright);font-weight:500}
+    .now-note{background:transparent;color:var(--text);border-top:1px solid var(--line)}.now-note p{color:var(--muted)}
+  </style>
 </Base>

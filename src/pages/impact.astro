@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Impact" description="Evidence from Darshan Kansara's work across cloud cost, platform reliability, datacenter operations, and continuous improvement.">
+  <header class="page-hero">
+    <p class="eyebrow">Impact</p>
+    <div><h1>Evidence over adjectives.</h1><p>Four examples of operating work made measurable: what changed, how the system changed, and why the outcome mattered.</p></div>
+  </header>
+
+  <section class="evidence" aria-label="Impact evidence">
+    <article>
+      <div class="signal"><span>01 · Cloud economics</span><strong>$1M+</strong><small>annual platform savings</small></div>
+      <div class="story"><h2>Cost became an engineering signal.</h2><dl><div><dt>Change</dt><dd>Annual Azure data-platform spend was reduced.</dd></div><div><dt>Method</dt><dd>Right-size capacity, improve reservation strategy, automate visibility, and remove recurring idle infrastructure.</dd></div><div><dt>Consequence</dt><dd>Cost had technical owners and earlier signals instead of arriving as a late finance surprise.</dd></div></dl></div>
+    </article>
+    <article>
+      <div class="signal"><span>02 · Reliability</span><strong>Test before scale</strong><small>uncertainty moved left</small></div>
+      <div class="story"><h2>A controlled place to fail first.</h2><dl><div><dt>Change</dt><dd>Infrastructure changes gained a realistic pre-production proving ground.</dd></div><div><dt>Method</dt><dd>Established the first Azure Datacenter Instrumentation and Pre-Production Lab.</dd></div><div><dt>Consequence</dt><dd>Teams could learn before broad rollout carried the uncertainty into production.</dd></div></dl></div>
+    </article>
+    <article>
+      <div class="signal"><span>03 · Operations</span><strong>Readiness by design</strong><small>before release, not after</small></div>
+      <div class="story"><h2>Operations entered the delivery system earlier.</h2><dl><div><dt>Change</dt><dd>Monitoring, incident response, continuity, and runbooks became part of preparation.</dd></div><div><dt>Method</dt><dd>Connect readiness reviews and ownership to the same platform signals used by engineering.</dd></div><div><dt>Consequence</dt><dd>Critical data-platform change became more predictable and accountable.</dd></div></dl></div>
+    </article>
+    <article>
+      <div class="signal"><span>04 · Improvement</span><strong>Connected decisions</strong><small>one operating view</small></div>
+      <div class="story"><h2>Friction became visible sooner.</h2><dl><div><dt>Change</dt><dd>Capacity, finance, and supply-chain decisions shared a clearer system view.</dd></div><div><dt>Method</dt><dd>Use automation, measurement, Lean, and Kaizen practices against recurring operational delay.</dd></div><div><dt>Consequence</dt><dd>Cost and operational risk appeared early enough for teams to act.</dd></div></dl></div>
+    </article>
+  </section>
+
+  <section class="next"><p class="eyebrow">The system behind the outcomes</p><h2>See how the work developed over time.</h2><a href="/experience">Explore the experience <span aria-hidden="true">&rarr;</span></a></section>
+
+  <style>
+    .page-hero{padding:clamp(72px,9vw,118px) max(var(--pad),calc((100vw - var(--max))/2));display:grid;grid-template-columns:190px 1fr;gap:clamp(32px,7vw,98px);background:#0b1220;color:#fff;border-bottom:1px solid rgba(255,255,255,.12)}.eyebrow,.signal span,.signal small,dt{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.11em;text-transform:uppercase}.eyebrow{color:#75b7fb}.page-hero h1{max-width:11ch;color:#f5f3ed;font-size:clamp(3.2rem,6vw,6rem);line-height:.94;letter-spacing:-.045em}.page-hero div>p{max-width:54ch;color:#9eacbd;font-family:var(--font-display);font-size:clamp(1.05rem,1.7vw,1.3rem)}.evidence{width:min(var(--max),calc(100% - 2 * var(--pad)));margin:auto}.evidence article{display:grid;grid-template-columns:31% 1fr;gap:clamp(34px,7vw,92px);padding:clamp(58px,7vw,88px) 0;border-bottom:1px solid rgba(255,255,255,.14)}.signal{display:flex;flex-direction:column;align-items:flex-start}.signal span,.signal small{color:#8d9caf}.signal strong{margin:auto 0 10px;color:#c6a15a;font-family:var(--font-display);font-size:clamp(1.8rem,3.6vw,3.3rem);line-height:1;max-width:9ch}.story h2{color:#edf1f5;font-size:clamp(2rem,3.5vw,3.15rem);letter-spacing:-.03em;max-width:16ch}.story dl{margin:40px 0 0;display:grid;grid-template-columns:repeat(3,1fr)}.story dl div{padding:0 22px;border-left:1px solid rgba(198,161,90,.3)}dt{color:#aeb9c8}dd{margin:10px 0 0;color:#9eacbd;font-size:.88rem}.next{padding:clamp(72px,9vw,106px) max(var(--pad),calc((100vw - var(--max))/2));background:#101d31;color:#fff}.next h2{max-width:17ch;color:#fff;font-size:clamp(2.2rem,4vw,3.8rem)}.next a{display:inline-flex;margin-top:24px;padding:13px 18px;background:#f5f3ed;color:#0b1220;font-weight:700}
+    @media(max-width:760px){.page-hero,.evidence article{grid-template-columns:1fr}.page-hero{gap:24px}.evidence article{gap:30px}.signal strong{margin:30px 0 10px}.story dl{grid-template-columns:1fr}.story dl div{padding:15px 0;border-left:0;border-top:1px solid rgba(198,161,90,.25)}}
+  </style>
+  <style>
+    .page-hero,.next{background:transparent;color:var(--text);border-color:var(--line)}
+    .page-hero{min-height:64vh;align-items:end;padding-top:var(--section);padding-bottom:var(--section);grid-template-columns:var(--rail) 1fr}
+    .eyebrow,.signal span,.signal small,dt{letter-spacing:.08em}
+    .eyebrow{color:var(--gold)}
+    .page-hero h1{color:var(--paper);font-size:clamp(3.4rem,7.4vw,7.4rem);line-height:.86;letter-spacing:0;font-weight:400}
+    .page-hero div>p{color:var(--muted);font-family:var(--font-sans);font-size:clamp(1rem,1.5vw,1.2rem);max-width:48ch}
+    .evidence article{grid-template-columns:minmax(210px,31%) 1fr;border-color:var(--line);padding:clamp(64px,8vw,108px) 0}
+    .signal{min-height:250px;border-left:1px solid var(--accent-rule);padding-left:20px}
+    .signal span,.signal small{color:var(--dim)}
+    .signal strong{color:var(--gold);font-weight:400;letter-spacing:0}
+    .story h2{color:var(--paper);letter-spacing:0;font-weight:400}
+    .story dl div{border-color:var(--line)}dt{color:var(--azure)}dd{color:var(--muted)}
+    .next{display:grid;grid-template-columns:var(--rail) 1fr auto;align-items:end;gap:var(--gutter);border-top:1px solid var(--line)}
+    .next h2{color:var(--paper);font-weight:400;letter-spacing:0;margin:0}.next a{background:transparent;color:var(--azure-bright);border:1px solid var(--line);font-weight:500}
+    @media(max-width:760px){.page-hero,.next{grid-template-columns:1fr}.page-hero{min-height:auto}.signal{min-height:0}.next{align-items:start}}
+  </style>
+</Base>

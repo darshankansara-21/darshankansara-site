@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config';
+---
+<Base title="Contact" description="Contact Darshan Kansara about technology operations, cloud platforms, applied AI, and the products he builds.">
+  <section class="contact-page">
+    <div class="contact-intro"><p class="eyebrow">Contact</p><h1>Start with the real question.</h1><p>Technology. Operations. AI. Building things.</p></div>
+    <div class="channels">
+      <a class="primary" href={`mailto:${site.email}`}><span>Direct</span><strong>Email Darshan</strong><small>{site.email} &rarr;</small></a>
+      <a href={site.linkedin} target="_blank" rel="noopener noreferrer"><span>Professional</span><strong>LinkedIn</strong><small>Open profile in a new tab &nearr;</small></a>
+      <a href={site.github} target="_blank" rel="noopener noreferrer"><span>Code</span><strong>GitHub</strong><small>Open projects in a new tab &nearr;</small></a>
+      <a href={site.resumeUrl}><span>Background</span><strong>Resume</strong><small>View PDF &rarr;</small></a>
+    </div>
+    <nav class="continue" aria-label="Continue exploring"><span>Continue exploring</span><a href="/experience">Experience &rarr;</a><a href="/projects">Built &rarr;</a><a href="/writing">Writing &rarr;</a><a href="/now">Now &rarr;</a></nav>
+  </section>
+
+  <style>
+    :global(body){background:#0b1220}.contact-page{min-height:calc(100vh - 100px);padding:clamp(74px,10vw,132px) max(var(--pad),calc((100vw - var(--max))/2));background:#0b1220;color:#fff}.contact-intro{display:grid;grid-template-columns:190px 1fr;gap:clamp(32px,7vw,98px)}.eyebrow,.channels span,.channels small,.continue>span{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.11em;text-transform:uppercase}.eyebrow{color:#75b7fb}.contact-intro h1{max-width:12ch;color:#f5f3ed;font-size:clamp(3.2rem,6vw,6rem);line-height:.94;letter-spacing:-.045em}.contact-intro div{}.contact-intro>p:last-child{grid-column:2;color:#9eacbd;font-family:var(--font-display);font-size:clamp(1.05rem,1.7vw,1.3rem)}.channels{margin-top:clamp(64px,8vw,98px);display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid rgba(255,255,255,.15);border-left:1px solid rgba(255,255,255,.15)}.channels a{min-height:190px;padding:25px;display:flex;flex-direction:column;border-right:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);transition:background .25s,color .25s}.channels a:hover,.channels a:focus-visible{background:#152844}.channels .primary{background:#f3f1eb;color:#0b1220}.channels .primary:hover,.channels .primary:focus-visible{background:#dceafd}.channels span{color:#75b7fb}.channels .primary span{color:#2c5e96}.channels strong{margin-top:auto;font-family:var(--font-display);font-size:clamp(1.5rem,2.8vw,2.2rem)}.channels small{margin-top:9px;color:#8f9daf;text-transform:none;letter-spacing:0}.channels .primary small{color:#4d5c6e}.continue{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:54px}.continue>span{color:#7f8da0;margin-right:auto}.continue a{color:#b9c6d7;font-size:.84rem}.continue a:hover{color:#fff}
+    @media(max-width:700px){.contact-intro{grid-template-columns:1fr;gap:24px}.contact-intro>p:last-child{grid-column:auto}.channels{grid-template-columns:1fr}.channels a{min-height:150px}.continue{align-items:flex-start;flex-direction:column}.continue>span{margin-bottom:10px}}
+  </style>
+  <style>
+    :global(body){background:var(--ink)}.contact-page{background:transparent;color:var(--text)}.contact-intro{grid-template-columns:var(--rail) 1fr}.eyebrow{color:var(--gold);letter-spacing:.08em}.contact-intro h1{color:var(--paper);font-size:clamp(3.5rem,7.4vw,7.4rem);font-weight:400;letter-spacing:0;line-height:.86}.contact-intro>p:last-child{color:var(--muted);font-family:var(--font-sans)}
+    .channels{display:block;border:0;border-top:1px solid var(--line)}.channels a,.channels .primary{min-height:0;display:grid;grid-template-columns:var(--rail) 1fr auto;gap:var(--gutter);align-items:center;padding:clamp(24px,3vw,38px) 0;background:transparent;color:var(--text);border:0;border-bottom:1px solid var(--line)}.channels a:hover,.channels a:focus-visible,.channels .primary:hover,.channels .primary:focus-visible{background:var(--surface)}.channels span,.channels .primary span{color:var(--gold)}.channels strong{margin:0;color:var(--paper);font-weight:400}.channels small,.channels .primary small{margin:0;color:var(--muted);text-align:right}.continue{border-top:1px solid var(--line);padding-top:32px}.continue>span{color:var(--dim)}.continue a{color:var(--azure-bright)}
+    @media(max-width:700px){.channels a,.channels .primary{grid-template-columns:1fr;gap:5px}.channels small,.channels .primary small{text-align:left}}
+  </style>
+</Base>

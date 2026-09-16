@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import { notes, type Note } from '../../data/writing';
+
+export function getStaticPaths() {
+  return notes.map((note) => ({ params: { slug: note.slug }, props: { note } }));
+}
+
+interface Props { note: Note; }
+const { note } = Astro.props;
+const currentIndex = notes.findIndex((item) => item.slug === note.slug);
+const nextNote = notes[(currentIndex + 1) % notes.length];
+---
+<Base title={note.title} description={note.lede}>
+  <article class="note">
+    <header>
+      <a class="back" href="/writing"><span aria-hidden="true">&larr;</span> All writing</a>
+      <div class="meta"><span>Field note {note.number}</span><span>{note.category}</span></div>
+      <h1>{note.title}</h1>
+      <p class="lede">{note.lede}</p>
+    </header>
+    <div class="body">
+      <p>{note.paragraphs[0]}</p>
+      <p>{note.paragraphs[1]}</p>
+      <blockquote>{note.quote}</blockquote>
+      <p>{note.paragraphs[2]}</p>
+      <p>{note.paragraphs[3]}</p>
+    </div>
+  </article>
+  <nav class="next-note" aria-label="Continue reading"><span>Next field note</span><a href={`/writing/${nextNote.slug}`}><strong>{nextNote.title}</strong><small>{nextNote.subtitle} <span aria-hidden="true">&rarr;</span></small></a></nav>
+
+  <style>
+    :global(body){background:#0b1220}.note{background:var(--paper)}.note header{padding:clamp(62px,8vw,104px) max(var(--pad),calc((100vw - 900px)/2));background:#0b1220;color:#fff}.back{display:inline-flex;margin-bottom:clamp(54px,8vw,90px);color:#8fc3f7;font-size:.82rem;font-weight:600}.meta{display:flex;justify-content:space-between;gap:24px;color:#91a0b4;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase}.meta span:first-child{color:#c6a15a}.note h1{max-width:12ch;margin:34px 0;color:#f5f3ed;font-size:clamp(3rem,6vw,5.6rem);line-height:.96;letter-spacing:-.045em}.lede{max-width:33em;color:#b3c0d0;font-family:var(--font-display);font-size:clamp(1.15rem,2vw,1.45rem);line-height:1.55}.body{width:min(720px,calc(100% - 2 * var(--pad)));margin:auto;padding:clamp(70px,9vw,112px) 0}.body p{color:#3f4d60;font-size:1.04rem;line-height:1.82}.body blockquote{margin:48px 0;padding:4px 0 4px 26px;border-left:2px solid var(--azure);color:#2d5d96;font-family:var(--font-display);font-size:clamp(1.35rem,2.5vw,1.85rem);line-height:1.4}.next-note{padding:clamp(58px,7vw,82px) max(var(--pad),calc((100vw - var(--max))/2));display:grid;grid-template-columns:190px 1fr;gap:clamp(32px,7vw,98px);background:#101d31;color:#fff}.next-note>span{color:#c6a15a;font-family:var(--font-mono);font-size:.64rem;text-transform:uppercase}.next-note a{display:grid;gap:10px}.next-note strong{max-width:19ch;color:#f3f1ed;font-family:var(--font-display);font-size:clamp(1.7rem,3vw,2.6rem);line-height:1.1}.next-note small{color:#8fc3f7}
+    @media(max-width:650px){.meta{align-items:flex-start;flex-direction:column;gap:7px}.next-note{grid-template-columns:1fr;gap:24px}}
+  </style>
+  <style>
+    :global(body){background:var(--ink)}.note{background:transparent;color:var(--text)}.note header{background:transparent;color:var(--text);border-bottom:1px solid var(--line)}.back{color:var(--azure-bright);font-weight:500}.meta{color:var(--dim)}.meta span:first-child{color:var(--gold)}
+    .note h1{color:var(--paper);font-size:clamp(3.4rem,7vw,7rem);font-weight:400;letter-spacing:0;line-height:.88}.lede{color:var(--muted);font-family:var(--font-sans)}
+    .body p{color:#c5cbc1;font-size:1.08rem}.body p:first-child::first-letter{float:left;margin:.08em .12em 0 0;color:var(--gold);font-family:var(--font-display);font-size:4.3rem;line-height:.72}.body blockquote{color:var(--azure-bright);border-color:var(--gold);font-weight:400}
+    .next-note{background:transparent;color:var(--text);border-top:1px solid var(--line);grid-template-columns:var(--rail) 1fr}.next-note>span{color:var(--gold)}.next-note strong{color:var(--paper);font-weight:400}.next-note small{color:var(--azure-bright)}
+  </style>
+</Base>

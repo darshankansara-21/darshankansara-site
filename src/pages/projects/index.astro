@@ -4,15 +4,38 @@ import { getCollection } from 'astro:content';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
-<Base title="Projects" description="Things I've built or am building.">
-  <h1>Projects</h1>
-  <p class="muted">Things I've built, am building, or am tinkering with.</p>
+<Base title="Built" description="LifeLens and ApplyReady: products built by Darshan Kansara around safer, more legible decisions.">
+    <header class="project-hero">
+      <div><p class="eyebrow">Built</p><h1>Things I actually made.</h1></div>
+      <p>Two live products. Different domains. One shared standard: show the evidence, protect the user, and keep the consequential decision visible.</p>
+    </header>
 
-  {projects.map((p) => (
-    <a class="card" href={`/projects/${p.slug}`}>
-      <h3>{p.data.title} <span class="muted" style="font-size:0.85em;font-weight:400">· {p.data.status}</span></h3>
-      <p class="tagline">{p.data.tagline}</p>
-      <div class="tags">{p.data.tags.map((t) => <span class="tag">{t}</span>)}</div>
-    </a>
-  ))}
+    <div class="project-list">
+      {projects.map((project, index) => (
+        <article>
+          <div class="project-index"><span>0{index + 1}</span><span>{project.data.status}</span></div>
+          <div class="project-copy">
+            <h2>{project.data.title}</h2>
+            <p>{project.data.tagline}</p>
+            <div class="tags">{project.data.tags.map((tag) => <span>{tag}</span>)}</div>
+            <div class="links"><a href={project.slug === 'lifelens' ? '/lifelens' : project.slug === 'applyready' ? '/applyready' : `/projects/${project.slug}`}>Read the product story <span aria-hidden="true">&rarr;</span></a>{project.data.demo && <a href={project.data.demo} target="_blank" rel="noopener noreferrer">Open live product <span aria-hidden="true">&nearr;</span></a>}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <section class="project-rule"><div><p class="eyebrow">The rule underneath both</p><h2>Reduce uncertainty. Keep the decision human.</h2></div><a href="/ai">Read the AI philosophy <span aria-hidden="true">&rarr;</span></a></section>
+  <style>
+    main{background:var(--paper)}.project-hero{padding:clamp(72px,9vw,110px) max(var(--pad),calc((100vw - var(--max))/2));background:var(--ink);color:#fff;display:grid;grid-template-columns:1fr .75fr;gap:clamp(48px,9vw,130px);align-items:end}.eyebrow{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:#7ebaff}.project-hero h1{font-size:clamp(3.1rem,5.2vw,5rem);line-height:.96;letter-spacing:-.04em;color:#fff;max-width:10ch;margin:26px 0 0}.project-hero>p{font-family:var(--font-display);font-size:clamp(1.08rem,1.8vw,1.32rem);line-height:1.55;color:#aebdd0;max-width:580px}.project-list{width:min(var(--max),calc(100% - 2 * var(--pad)));margin:auto}.project-list article{display:grid;grid-template-columns:190px 1fr;gap:clamp(34px,7vw,96px);padding:clamp(62px,7vw,88px) 0;border-bottom:1px solid var(--line)}.project-index{display:flex;gap:14px;font-family:var(--font-mono);font-size:.64rem;text-transform:uppercase;color:var(--muted);padding-top:8px}.project-index span:first-child{color:var(--azure)}.project-copy{max-width:850px}.project-copy h2{font-size:clamp(2.8rem,4.6vw,4.4rem);line-height:.95;letter-spacing:-.04em;margin:0 0 25px}.project-copy>p{font-family:var(--font-display);font-size:clamp(1.08rem,1.8vw,1.35rem);line-height:1.5;color:#40536b;max-width:34em}.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}.tags span{padding:7px 10px;border:1px solid var(--line);font-family:var(--font-mono);font-size:.6rem;text-transform:uppercase;color:var(--muted)}.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}.links a{padding:13px 17px;border:1px solid var(--ink);font-weight:700;color:var(--ink)}.links a:first-child{background:var(--ink);color:#fff}.project-rule{padding:clamp(70px,8vw,96px) max(var(--pad),calc((100vw - var(--max))/2));background:#10233e;color:#fff;display:flex;align-items:end;justify-content:space-between;gap:60px}.project-rule h2{font-size:clamp(2.2rem,3.8vw,3.5rem);line-height:1.05;letter-spacing:-.035em;color:#fff;max-width:16ch;margin:22px 0 0}.project-rule>a{color:#8bc2ff;font-weight:700;white-space:nowrap}@media(max-width:720px){.project-hero{grid-template-columns:1fr}.project-list article{grid-template-columns:1fr;gap:28px}.project-index{padding:0}.links{flex-direction:column}.links a{text-align:center}.project-rule{align-items:flex-start;flex-direction:column;gap:30px}}
+  </style>
+  <style>
+    :global(body),main{background:var(--ink);color:var(--text)}
+    .project-hero{min-height:62vh;background:transparent;color:var(--text);border-bottom:1px solid var(--line)}
+    .eyebrow{color:var(--gold);letter-spacing:.08em}.project-hero h1{color:var(--paper);font-size:clamp(3.5rem,7vw,7rem);line-height:.87;letter-spacing:0;font-weight:400}.project-hero>p{font-family:var(--font-sans);color:var(--muted)}
+    .project-list article{position:relative;grid-template-columns:var(--rail) 1fr;border-color:var(--line);padding:clamp(70px,9vw,118px) 0}.project-list article::after{content:"";position:absolute;right:0;top:0;width:22%;height:1px;background:var(--gold)}
+    .project-index{color:var(--dim)}.project-index span:first-child{color:var(--gold)}.project-copy h2{color:var(--paper);font-size:clamp(3rem,6vw,6rem);font-weight:400;letter-spacing:0}.project-copy>p{font-family:var(--font-sans);color:var(--muted)}
+    .tags span{border-color:var(--line);color:var(--dim)}.links a{border-color:var(--line);color:var(--paper);font-weight:500}.links a:first-child{background:var(--paper);color:var(--ink)}
+    .project-rule{background:transparent;color:var(--text);border-top:1px solid var(--line)}.project-rule h2{color:var(--paper);font-weight:400;letter-spacing:0}.project-rule a{border-color:var(--line);color:var(--azure-bright)}
+    @media(max-width:760px){.project-hero{min-height:auto}.project-list article{grid-template-columns:1fr}}
+  </style>
 </Base>

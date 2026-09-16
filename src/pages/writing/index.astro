@@ -1,22 +1,36 @@
 ---
 import Base from '../../layouts/Base.astro';
+import { notes } from '../../data/writing';
 ---
-<Base title="Writing" description="Notes, walkthroughs, and lessons from the things I build.">
-  <h1>Writing</h1>
-  <p class="muted">Notes, build logs, and lessons from the projects on this site. Coming soon.</p>
+<Base title="Writing" description="Field notes by Darshan Kansara on reliability, continuous improvement, applied AI, and the judgment behind complex technology systems.">
+    <header class="writing-hero">
+      <div class="writing-intro">
+        <p class="eyebrow">Writing</p>
+        <h1>Notes from inside the system.</h1>
+      </div>
+      <div class="writing-note">
+        <p>I write to slow the thinking down. These are working notes from infrastructure, cloud, data platforms, leadership, and the practical edge of AI.</p>
+        <span>Three notes · More as the ideas earn them</span>
+      </div>
+    </header>
 
-  <div class="card">
-    <h3>How I rebuilt duplicate detection with multi-signal hashing</h3>
-    <p class="tagline">Draft · why one perceptual hash isn't enough for messy real-world photo libraries.</p>
-  </div>
+    <nav class="note-index" aria-label="Field notes">
+      {notes.map((note) => <a href={`/writing/${note.slug}`}><span>{note.number}</span><strong>{note.title}</strong><small>{note.subtitle} <b aria-hidden="true">&rarr;</b></small></a>)}
+    </nav>
 
-  <div class="card">
-    <h3>Turning PDF executive reports into clean HTML dashboards</h3>
-    <p class="tagline">Draft · the small pipeline that saves me a day every quarter.</p>
-  </div>
-
-  <div class="card">
-    <h3>A pragmatic FastAPI + Next.js setup for AI side projects</h3>
-    <p class="tagline">Draft · the exact folder structure I keep reusing.</p>
-  </div>
+    <footer class="writing-footer">
+      <div><span>Currently exploring</span><p>Where AI can reduce operational toil without making judgment harder to inspect.</p></div>
+      <a href="/now">See what has my attention <span aria-hidden="true">&rarr;</span></a>
+    </footer>
+  <style>
+    main{background:var(--paper)}.eyebrow{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:#d7ad5b}.writing-hero{padding:clamp(76px,9vw,118px) var(--pad);background:var(--ink);color:#fff;display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(48px,9vw,140px);align-items:end}.writing-hero>div{max-width:700px}.writing-hero h1{font-size:clamp(3.2rem,6vw,5.8rem);line-height:.97;letter-spacing:-.04em;color:#fff;max-width:10ch;margin:26px 0 0}.writing-note{padding-left:30px;border-left:1px solid var(--line-dark)}.writing-note p{font-family:var(--font-display);font-size:1.14rem;line-height:1.55;color:#bec9d8}.writing-note span{font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;color:#72829a}.note-index{width:min(var(--max),calc(100% - 2 * var(--pad)));margin:auto;display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid var(--line)}.note-index a{min-height:150px;padding:24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column}.note-index span{font-family:var(--font-mono);font-size:.62rem;color:var(--azure)}.note-index strong{font-family:var(--font-display);font-size:1rem;line-height:1.25;margin:24px 0 8px}.note-index small{color:var(--muted)}
+    .note-index small{margin-top:auto}.note-index b{color:var(--azure);font-weight:400}.writing-footer{padding:56px var(--pad);background:var(--white);display:flex;align-items:center;justify-content:space-between;gap:40px}.writing-footer>div{max-width:680px}.writing-footer span{font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;color:#916d2c}.writing-footer p{margin:6px 0 0;color:var(--muted)}.writing-footer a{font-weight:700;color:#25588f;white-space:nowrap}@media(max-width:760px){.writing-hero{grid-template-columns:1fr;align-items:start;padding-top:54px;padding-bottom:58px;gap:34px}.writing-hero h1{font-size:clamp(2.7rem,12vw,3.7rem);margin-top:20px}.writing-note{padding:20px 0 0;border-left:0;border-top:1px solid var(--line-dark)}.note-index{grid-template-columns:1fr}.note-index a{min-height:150px}.writing-footer{align-items:flex-start;flex-direction:column}}
+  </style>
+  <style>
+    :global(body),main{background:var(--ink);color:var(--text)}.eyebrow{color:var(--gold);letter-spacing:.08em}
+    .writing-hero{min-height:64vh;background:transparent;color:var(--text);border-bottom:1px solid var(--line)}.writing-hero h1{color:var(--paper);font-size:clamp(3.5rem,7vw,7rem);font-weight:400;letter-spacing:0;line-height:.87}.writing-note{border-color:var(--line)}.writing-note p{font-family:var(--font-sans);color:var(--muted)}.writing-note span{color:var(--dim)}
+    .note-index{display:block;border-left:0}.note-index a{position:relative;min-height:0;display:grid;grid-template-columns:72px 1fr 1fr;gap:var(--gutter);align-items:baseline;padding:clamp(30px,4vw,52px) 0;border-right:0;border-color:var(--line)}.note-index a::after{content:"";position:absolute;right:0;top:0;width:0;height:1px;background:var(--azure);transition:width .35s ease}.note-index a:hover::after{width:35%}.note-index span{color:var(--gold)}.note-index strong{color:var(--paper);font-size:clamp(1.5rem,2.8vw,2.7rem);font-weight:400;margin:0}.note-index small{color:var(--muted);margin:0}.note-index b{color:var(--azure)}
+    .writing-footer{background:transparent;color:var(--text);border-top:1px solid var(--line)}.writing-footer span{color:var(--gold)}.writing-footer p{color:var(--muted)}.writing-footer a{color:var(--azure-bright);font-weight:500}
+    @media(max-width:760px){.writing-hero{min-height:auto}.note-index a{grid-template-columns:38px 1fr;gap:18px}.note-index small{grid-column:2}}
+  </style>
 </Base>

@@ -1,44 +1,40 @@
 ---
-title: "LifeLens AI"
-tagline: "A private, on-device photo organizer for Windows. Plug in your iPhone or Android over USB — built to import 30,000+ photo libraries that Windows Photos can't handle."
-status: active
-tags: ["Flutter", "AI", "On-device ML", "iPhone import", "USB / MTP", "Privacy-first"]
+title: "LifeLens"
+tagline: "A private photo intelligence app that finds clutter, protects important memories, and helps you understand your library without uploading it."
+status: shipped
+tags: ["Flutter", "On-device ML", "Android", "Privacy-first", "English / Hindi / Gujarati"]
 order: 1
+demo: "https://lifelens.darshankansara.com"
 ---
 
 ## What it does
 
-LifeLens is a desktop app that connects to your **iPhone or Android over USB**, copies your photos into a private local folder, and uses on-device AI to surface what you can safely delete.
+LifeLens turns a crowded Android photo library into a reviewable set of decisions. It groups exact duplicates, similar shots, bursts, screenshots, large videos, and messaging clutter while keeping deletion under the user's control.
 
-It's built specifically to handle libraries Windows Photos chokes on. Windows Photos tries to thumbnail every HEIC during import, holds 30K file references in memory, and offers no resume — so it hangs around 2,000 photos. LifeLens does the opposite:
+The app is available on [Google Play](https://play.google.com/store/apps/details?id=com.darshankansara.lifelens). A browser-based photo analyzer is also available at [lifelens.darshankansara.com](https://lifelens.darshankansara.com).
 
-- **Streams enumeration** — no 30K-object array in memory.
-- **Pure file copy** during import — no decoding, no thumbnailing.
-- **Skip-on-error** — one bad HEIC doesn't kill 29,999 others.
-- **Persistent manifest** after every successful file — resume is one tap.
-- **Per-file timeout** — a stuck file gets skipped, not the whole batch.
-- **Live stats** — copied / total, MB/s, ETA, error count.
+## What it finds
 
-## What you get after import
+- **Duplicates and near-duplicates** using perceptual and visual signals rather than filenames alone.
+- **Similar photos and bursts** presented for review, never silently selected as disposable.
+- **Screenshots, large videos, and messaging clutter** organized into focused cleanup groups.
+- **Important documents and memories** kept out of casual cleanup recommendations.
+- **Ask LifeLens** queries across dates, media types, visual concepts, and available photo location metadata.
 
-- **Duplicates** — multi-signal detector (perceptual hash + color histogram + aspect-ratio bucketing). Doesn't false-positive every white document.
-- **WhatsApp Detox** — every photo, sticker and forward WhatsApp saved, in one screen. Reclaim several GB in a sweep.
-- **Screenshots cleanup** — OTPs, recipes, cricket scores, forwarded memes.
-- **Documents pile** — Aadhaar, PAN, receipts, prescriptions auto-grouped.
-- **Recoverable storage** — see GB you'd reclaim, not just photo counts.
+## Why it is different
 
-## Why it exists
+LifeLens is designed around a conservative rule: detect broadly, recommend narrowly. Exact duplicates can produce a clear cleanup recommendation. Similar-looking photos remain review-only. Potentially important content is protected when the app is uncertain.
 
-I had 15,000+ photos sprawling across OneDrive, an iPhone, an Android phone, and an SD card. Google Photos and Apple Photos missed obvious duplicates while flagging totally different images as the same. Windows Photos hung at 2,000 photos when I tried to import 30K from iPhone. Cloud services wanted the whole library uploaded just to organize it. So I started building my own — local-first, USB-friendly, no cloud uploads.
+The result is not an automatic deletion engine. It is a calmer way to inspect a library, understand why something was surfaced, and make the final decision yourself.
 
-## What's private about it
+## Private by design
 
-Everything runs on your computer. No cloud upload. No telemetry. No analytics about what's in your library. Deletes go to an in-app **Recycle Bin** you control — nothing is hard-deleted by the app.
+Photo analysis runs on the device. Photos are not uploaded to a LifeLens account or cloud library. Deletion uses Android's system confirmation flow, so the user sees and approves what leaves the library.
 
 ## Stack
 
-Flutter (Windows shipping now · macOS / Android / iOS in progress) · embedded PowerShell + `Shell.Application` COM for MTP enumeration & resumable copy · `photo_manager` for native gallery access on mobile · pure-Dart `image` package for hashing · SQLite via `sqflite_common_ffi` for the local index · Provider state.
+Flutter and Dart, native Android media APIs, perceptual hashing, color histograms, Google ML Kit image labeling, on-device indexes, and Cloudflare for the public web experience.
 
 ## Status
 
-**Windows v0.2.0 shipping today** — runs end-to-end: iPhone & Android USB import via MTP (resumable, skip-on-error), drive-letter import for SD cards / older Android, library scan, duplicate detection, WhatsApp Detox, Screenshots cleanup, Documents pile, soft-delete recycle bin. Android / iOS app builds being set up on a separate machine to keep mobile and desktop dev independent.
+**Live on Android.** English, Hindi, and Gujarati are supported. iOS and desktop editions are not currently offered.

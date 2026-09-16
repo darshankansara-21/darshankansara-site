@@ -1,0 +1,258 @@
+---
+import Base from '../layouts/Base.astro';
+
+const playUrl = 'https://play.google.com/store/apps/details?id=com.darshankansara.lifelens';
+const webUrl = 'https://lifelens.darshankansara.com';
+const privacyUrl = 'https://lifelens.darshankansara.com/privacy';
+
+const features = [
+  {
+    number: '01',
+    title: 'Find the obvious waste.',
+    body: 'Exact duplicates, similar shots, bursts, screenshots, large videos, and messaging clutter become focused review groups instead of one endless camera roll.',
+  },
+  {
+    number: '02',
+    title: 'Protect before cleaning.',
+    body: 'Important documents and high-value memories are kept away from casual cleanup. When confidence is low, LifeLens favors protection over deletion.',
+  },
+  {
+    number: '03',
+    title: 'Ask the library directly.',
+    body: 'Type or speak questions about dates, media types, storage, and supported visual concepts. Results come from the library already indexed on the device.',
+  },
+  {
+    number: '04',
+    title: 'Keep the human decision.',
+    body: 'Similar photos stay review-only. Destructive actions use Android confirmation. The app surfaces evidence; the owner makes the call.',
+  },
+];
+
+const screens = [
+  { src: '/lifelens/screen-1.png', title: 'A calm home for the library', alt: 'LifeLens home screen with photo summary, cleanup action, and protected memory count' },
+  { src: '/lifelens/screen-2.png', title: 'Storage answers in plain language', alt: 'Ask LifeLens showing photo, video, WhatsApp, and screenshot storage totals' },
+  { src: '/lifelens/screen-4.png', title: 'Collections without the clutter', alt: 'LifeLens collections for people, videos, WhatsApp media, and documents' },
+  { src: '/lifelens/screen-5.png', title: 'Questions by text or voice', alt: 'Ask LifeLens search with suggested photo library questions and voice input' },
+];
+---
+
+<Base
+  title="LifeLens"
+  description="LifeLens is a private Android photo intelligence app for understanding clutter, protecting memories, and reviewing cleanup without uploading your library."
+  image="/lifelens/feature.png"
+>
+  <section class="ll-hero">
+    <div class="ll-hero-grid">
+      <div class="ll-hero-copy reveal">
+        <div class="ll-brandline">
+          <img src="/lifelens/icon.png" alt="" width="64" height="64" />
+          <span>LifeLens</span>
+          <span class="live"><i aria-hidden="true"></i> Live on Android</span>
+        </div>
+        <p class="ll-kicker">Private photo intelligence</p>
+        <h1>Your photos,<br /><strong>beautifully understood.</strong></h1>
+        <p class="ll-intro">Find the clutter. Protect what matters. Ask questions about your library. Your photos stay on your device, and every cleanup decision stays yours.</p>
+        <div class="ll-actions">
+          <a class="ll-primary" href={playUrl} target="_blank" rel="noopener noreferrer">Get it on Google Play <span aria-hidden="true">&nearr;</span></a>
+          <a class="ll-secondary" href={webUrl} target="_blank" rel="noopener noreferrer">Try the web analyzer <span aria-hidden="true">&nearr;</span></a>
+        </div>
+        <p class="availability">Android app &middot; English, Hindi, and Gujarati &middot; No account required</p>
+      </div>
+      <div class="ll-hero-visual reveal">
+        <img src="/lifelens/screen-1.png" alt="LifeLens home screen showing a private photo library and review cleanup action" width="1080" height="2160" />
+      </div>
+    </div>
+  </section>
+
+  <section class="truth-strip" aria-label="LifeLens principles">
+    <div class="truth-grid">
+      <div><span>01</span><strong>Photos stay on device</strong></div>
+      <div><span>02</span><strong>Review before removal</strong></div>
+      <div><span>03</span><strong>Uncertain means protect</strong></div>
+      <div><span>04</span><strong>No account required</strong></div>
+    </div>
+  </section>
+
+  <section class="ll-section features-section">
+    <div class="ll-container">
+      <header class="ll-section-head reveal">
+        <p class="ll-kicker">What it does</p>
+        <h2>Less hunting. Better decisions.</h2>
+        <p>LifeLens is not an automatic deletion engine. It turns a messy library into smaller, understandable choices.</p>
+      </header>
+      <div class="feature-grid">
+        {features.map((feature) => (
+          <article class="feature reveal">
+            <span>{feature.number}</span>
+            <h3>{feature.title}</h3>
+            <p>{feature.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="ll-container">
+      <header class="ll-section-head gallery-head reveal">
+        <p class="ll-kicker">Inside the app</p>
+        <h2>Real screens. Real product.</h2>
+        <p>The experience is designed for scanning, comparing, and acting without turning a personal photo library into a dashboard.</p>
+      </header>
+      <div class="screen-gallery">
+        {screens.map((screen) => (
+          <figure class="screen reveal">
+            <img src={screen.src} alt={screen.alt} width="1080" height="2160" loading="lazy" />
+            <figcaption>{screen.title}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy-section">
+    <div class="ll-container privacy-grid">
+      <div class="privacy-copy reveal">
+        <p class="ll-kicker">Private by design</p>
+        <h2>Your library is not the product.</h2>
+        <p>The Android app analyzes the photo library on the device. It does not upload photos into a LifeLens account or cloud photo library.</p>
+        <p>Visual labels and local indexes help answer supported questions. Location searches use metadata available on the photo. Cleanup always remains review-first.</p>
+        <a href={privacyUrl} target="_blank" rel="noopener noreferrer">Read the privacy policy <span aria-hidden="true">&nearr;</span></a>
+      </div>
+      <div class="privacy-flow reveal" aria-label="LifeLens privacy flow">
+        <div class="flow-node"><span>1</span><strong>Your Android library</strong><small>Photos and videos already on the phone</small></div>
+        <div class="flow-line" aria-hidden="true"></div>
+        <div class="flow-node focus"><span>2</span><strong>On-device analysis</strong><small>Groups, labels, and review suggestions</small></div>
+        <div class="flow-line" aria-hidden="true"></div>
+        <div class="flow-node"><span>3</span><strong>Your decision</strong><small>Nothing is removed without confirmation</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="available-section">
+    <div class="ll-container available-grid">
+      <div class="available-copy reveal">
+        <p class="ll-kicker">Available now</p>
+        <h2>Start with the Android app.</h2>
+        <p>LifeLens is live on Google Play. The separate web analyzer lets desktop visitors inspect selected photos locally in the browser.</p>
+        <div class="ll-actions">
+          <a class="ll-primary" href={playUrl} target="_blank" rel="noopener noreferrer">Open Google Play <span aria-hidden="true">&nearr;</span></a>
+          <a class="ll-secondary" href={webUrl} target="_blank" rel="noopener noreferrer">Open web analyzer <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <img class="feature-art reveal" src="/lifelens/feature.png" alt="LifeLens. Free up space. Keep what matters." width="1024" height="500" loading="lazy" />
+    </div>
+  </section>
+
+  <style>
+    .ll-container, .ll-hero-grid, .truth-grid { width: min(1240px, calc(100% - 56px)); margin-inline: auto; }
+    .ll-hero { background: #122542; color: #d5dff0; min-height: 760px; overflow: hidden; }
+    .ll-hero-grid { min-height: 760px; display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr); gap: 72px; align-items: center; }
+    .ll-hero-copy { padding: 90px 0; }
+    .ll-brandline { display: flex; align-items: center; gap: 14px; color: #fff; font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; margin-bottom: 72px; }
+    .ll-brandline img { width: 52px; height: 52px; border-radius: 12px; }
+    .live { display: inline-flex; align-items: center; gap: 7px; margin-left: 8px; color: #c4cfe1; font-family: var(--font-mono); font-size: .64rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+    .live i { display: block; width: 7px; height: 7px; border-radius: 50%; background: #42c98a; box-shadow: 0 0 0 5px rgba(66,201,138,.12); }
+    .ll-kicker { color: #efb540; font-family: var(--font-mono); font-size: .71rem; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 18px; }
+    .ll-hero h1 { max-width: 760px; margin: 0 0 28px; color: #fff; font-size: clamp(3rem, 6.2vw, 5.7rem); line-height: .98; font-weight: 700; }
+    .ll-hero h1 strong { color: #efb540; font-weight: inherit; }
+    .ll-intro { max-width: 640px; color: #bdc9dd; font-size: 1.16rem; line-height: 1.65; }
+    .ll-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .ll-actions a { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 50px; padding: 12px 20px; border: 1px solid rgba(255,255,255,.24); color: #fff; font-weight: 700; }
+    .ll-actions .ll-primary { background: #fff; border-color: #fff; color: #122542; }
+    .ll-actions a:hover { color: #efb540; border-color: #efb540; }
+    .ll-actions .ll-primary:hover { background: #efb540; border-color: #efb540; color: #122542; }
+    .availability { margin: 18px 0 0; color: #899bb8; font-family: var(--font-mono); font-size: .68rem; }
+    .ll-hero-visual { align-self: end; height: 690px; display: flex; align-items: flex-end; justify-content: center; padding-top: 45px; }
+    .ll-hero-visual img { display: block; width: min(100%, 405px); height: auto; box-shadow: 0 45px 110px rgba(2,10,25,.42); }
+
+    .truth-strip { background: #0d1b31; color: #fff; border-top: 1px solid rgba(255,255,255,.09); }
+    .truth-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .truth-grid div { display: flex; align-items: center; gap: 14px; min-height: 92px; padding: 20px 24px; border-left: 1px solid rgba(255,255,255,.09); }
+    .truth-grid div:last-child { border-right: 1px solid rgba(255,255,255,.09); }
+    .truth-grid span { color: #efb540; font-family: var(--font-mono); font-size: .68rem; }
+    .truth-grid strong { font-size: .85rem; font-weight: 600; }
+
+    .ll-section { padding: 120px 0; }
+    .ll-section-head { max-width: 720px; margin-bottom: 58px; }
+    .ll-section-head h2, .privacy-copy h2, .available-copy h2 { font-size: clamp(2rem, 4.1vw, 3.4rem); line-height: 1.08; margin-bottom: 20px; }
+    .ll-section-head > p:last-child, .privacy-copy > p, .available-copy > p { color: var(--platinum); font-size: 1.05rem; line-height: 1.65; }
+    .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+    .feature { min-height: 270px; padding: 42px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .feature > span { color: var(--azure); font-family: var(--font-mono); font-size: .7rem; letter-spacing: .14em; }
+    .feature h3 { margin: 30px 0 14px; font-size: 1.4rem; }
+    .feature p { color: var(--platinum); line-height: 1.65; margin: 0; max-width: 54ch; }
+
+    .gallery-section { background: #122542; color: #d5dff0; padding: 120px 0; overflow: hidden; }
+    .gallery-head h2 { color: #fff; }
+    .gallery-head > p:last-child { color: #acbad1; }
+    .screen-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-items: start; }
+    .screen { margin: 0; }
+    .screen:nth-child(even) { margin-top: 64px; }
+    .screen img { display: block; width: 100%; height: auto; box-shadow: 0 24px 70px rgba(0,0,0,.32); }
+    .screen figcaption { color: #d5dff0; font-size: .82rem; padding: 15px 2px 0; }
+
+    .privacy-section { padding: 130px 0; }
+    .privacy-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 100px; align-items: center; }
+    .privacy-copy a { display: inline-flex; gap: 10px; color: var(--azure); font-weight: 700; margin-top: 16px; }
+    .privacy-flow { border: 1px solid var(--rule-strong); background: var(--bg-elev); padding: 36px; }
+    .flow-node { display: grid; grid-template-columns: 42px 1fr; gap: 2px 18px; align-items: center; padding: 20px; border: 1px solid var(--rule); }
+    .flow-node > span { grid-row: 1 / 3; display: grid; place-items: center; width: 42px; height: 42px; background: var(--surface); color: var(--azure); font-family: var(--font-mono); font-size: .74rem; }
+    .flow-node strong { color: var(--text-strong); }
+    .flow-node small { color: var(--muted); }
+    .flow-node.focus { border-color: var(--accent-rule); background: var(--accent-soft); }
+    .flow-line { width: 1px; height: 24px; background: var(--rule-strong); margin-left: 41px; }
+
+    .available-section { background: #0d1b31; color: #d5dff0; padding: 100px 0; }
+    .available-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; align-items: center; }
+    .available-copy h2 { color: #fff; }
+    .available-copy > p { color: #acbad1; }
+    .feature-art { display: block; width: 100%; height: auto; border: 1px solid rgba(255,255,255,.1); }
+
+    @media (max-width: 920px) {
+      .ll-hero-grid { grid-template-columns: 1fr .72fr; gap: 32px; }
+      .ll-hero-copy { padding: 70px 0; }
+      .ll-brandline { margin-bottom: 48px; }
+      .truth-grid { grid-template-columns: repeat(2, 1fr); }
+      .screen-gallery { grid-template-columns: repeat(2, 1fr); }
+      .privacy-grid, .available-grid { grid-template-columns: 1fr; gap: 56px; }
+    }
+    @media (max-width: 680px) {
+      .ll-container, .ll-hero-grid, .truth-grid { width: min(100% - 36px, 1240px); }
+      .ll-hero-grid { grid-template-columns: 1fr; }
+      .ll-hero { min-height: 0; }
+      .ll-hero-copy { padding: 58px 0 18px; }
+      .ll-brandline { margin-bottom: 44px; flex-wrap: wrap; }
+      .live { width: 100%; margin: 0 0 0 66px; }
+      .ll-hero h1 { font-size: clamp(2.55rem, 13vw, 4rem); }
+      .ll-hero-visual { height: 550px; padding-top: 20px; }
+      .truth-grid { grid-template-columns: 1fr; }
+      .truth-grid div { border-right: 1px solid rgba(255,255,255,.09); min-height: 72px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature { padding: 32px 26px; min-height: 0; }
+      .ll-section, .gallery-section, .privacy-section { padding: 84px 0; }
+      .screen-gallery { gap: 10px; }
+      .screen:nth-child(even) { margin-top: 34px; }
+      .screen figcaption { font-size: .72rem; }
+      .privacy-flow { padding: 18px; }
+      .flow-node { padding: 15px; grid-template-columns: 36px 1fr; gap: 2px 12px; }
+      .flow-node > span { width: 36px; height: 36px; }
+      .available-section { padding: 78px 0; }
+      .ll-actions { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+  <style>
+    :global(body){background:var(--ink)}
+    .ll-hero,.truth-strip,.gallery-section,.available-section{background:transparent;color:var(--text);border-color:var(--line)}
+    .ll-hero{min-height:0;border-bottom:1px solid var(--line)}.ll-hero-grid{min-height:720px}.ll-brandline{color:var(--paper);font-family:var(--font-sans);font-weight:500}.ll-brandline img{border-radius:6px}.live{color:var(--muted)}
+    .ll-kicker{color:var(--gold);letter-spacing:.09em}.ll-hero h1{color:var(--paper);font-size:clamp(3.4rem,6.8vw,6.8rem);font-weight:400;letter-spacing:0;line-height:.88}.ll-hero h1 strong{color:var(--azure-bright);font-weight:400}.ll-intro{color:var(--muted)}
+    .ll-actions a{border-color:var(--line);color:var(--paper);font-weight:500}.ll-actions .ll-primary{background:var(--paper);border-color:var(--paper);color:var(--ink)}.ll-actions a:hover{color:var(--azure-bright);border-color:var(--azure)}.ll-actions .ll-primary:hover{background:var(--azure-bright);border-color:var(--azure-bright);color:var(--ink)}.availability{color:var(--dim)}
+    .ll-hero-visual{position:relative}.ll-hero-visual::before{content:"DEVICE / LOCAL";position:absolute;top:72px;right:0;color:var(--dim);font:500 .58rem var(--font-mono);letter-spacing:.1em}.ll-hero-visual img{box-shadow:0 45px 110px rgba(0,0,0,.45)}
+    .truth-strip{border-bottom:1px solid var(--line)}.truth-grid div{border-color:var(--line)}.truth-grid span{color:var(--gold)}.truth-grid strong{color:var(--paper)}
+    .ll-section,.privacy-section{background:transparent;color:var(--text)}.ll-section-head h2,.privacy-copy h2,.available-copy h2{color:var(--paper);font-weight:400;letter-spacing:0}.ll-section-head>p:last-child,.privacy-copy>p,.available-copy>p{color:var(--muted)}
+    .feature-grid,.feature{border-color:var(--line)}.feature{background:rgba(233,229,218,.015)}.feature>span{color:var(--gold)}.feature h3{color:var(--paper);font-family:var(--font-sans);font-weight:500}.feature p{color:var(--muted)}
+    .gallery-section{border-block:1px solid var(--line)}.gallery-head h2,.available-copy h2{color:var(--paper)}.gallery-head>p:last-child,.available-copy>p{color:var(--muted)}.screen figcaption{color:var(--muted);font-family:var(--font-mono)}
+    .privacy-flow{background:var(--surface);border-color:var(--line)}.flow-node{border-color:var(--line)}.flow-node strong{color:var(--paper)}.flow-node.focus{background:var(--accent-soft);border-color:var(--accent-rule)}
+    .available-section{border-top:1px solid var(--line)}.feature-art{border-color:var(--line);filter:saturate(.82)}
+  </style>
+</Base>
