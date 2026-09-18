@@ -14,6 +14,13 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
       {projects.map((project, index) => (
         <article>
           <div class="project-index"><span>0{index + 1}</span><span>{project.data.status}</span></div>
+          <div class:list={['project-visual', project.slug]}>
+            {project.slug === 'lifelens' ? (
+              <img src="/lifelens/screen-2.png" alt="LifeLens showing an on-device storage analysis" width="1080" height="1920" loading="lazy" decoding="async" />
+            ) : (
+              <img src="/applyready/fit.png" alt="ApplyReady comparing generic application material with evidence-led role fit" width="1200" height="1200" loading="lazy" decoding="async" />
+            )}
+          </div>
           <div class="project-copy">
             <h2>{project.data.title}</h2>
             <p>{project.data.tagline}</p>
@@ -32,10 +39,12 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     :global(body),main{background:var(--ink);color:var(--text)}
     .project-hero{min-height:62vh;background:transparent;color:var(--text);border-bottom:1px solid var(--line)}
     .eyebrow{color:var(--gold);letter-spacing:.08em}.project-hero h1{color:var(--paper);font-size:clamp(3.5rem,7vw,7rem);line-height:.87;letter-spacing:0;font-weight:400}.project-hero>p{font-family:var(--font-sans);color:var(--muted)}
-    .project-list article{position:relative;grid-template-columns:var(--rail) 1fr;border-color:var(--line);padding:clamp(70px,9vw,118px) 0}.project-list article::after{content:"";position:absolute;right:0;top:0;width:22%;height:1px;background:var(--gold)}
+    .project-list article{position:relative;grid-template-columns:var(--rail) minmax(260px,.72fr) 1fr;border-color:var(--line);padding:clamp(70px,9vw,118px) 0}.project-list article::after{content:"";position:absolute;right:0;top:0;width:22%;height:1px;background:var(--gold)}
+    .project-visual{height:440px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;border:1px solid var(--line);background:var(--surface)}.project-visual img{display:block;max-width:100%;height:auto}.project-visual.lifelens img{width:72%;transform:translateY(22%);box-shadow:0 20px 50px rgba(0,0,0,.35)}.project-visual.applyready{height:auto;align-items:center;padding:18px;background:var(--paper)}.project-visual.applyready img{width:100%}
     .project-index{color:var(--dim)}.project-index span:first-child{color:var(--gold)}.project-copy h2{color:var(--paper);font-size:clamp(3rem,6vw,6rem);font-weight:400;letter-spacing:0}.project-copy>p{font-family:var(--font-sans);color:var(--muted)}
     .tags span{border-color:var(--line);color:var(--dim)}.links a{border-color:var(--line);color:var(--paper);font-weight:500}.links a:first-child{background:var(--paper);color:var(--ink)}
     .project-rule{background:transparent;color:var(--text);border-top:1px solid var(--line)}.project-rule h2{color:var(--paper);font-weight:400;letter-spacing:0}.project-rule a{border-color:var(--line);color:var(--azure-bright)}
-    @media(max-width:760px){.project-hero{min-height:auto}.project-list article{grid-template-columns:1fr}}
+    @media(max-width:1000px){.project-list article{grid-template-columns:var(--rail) 1fr}.project-copy{grid-column:2}.project-visual{grid-column:2}}
+    @media(max-width:760px){.project-hero{min-height:auto}.project-list article{grid-template-columns:1fr}.project-copy,.project-visual{grid-column:auto}.project-visual{height:390px}}
   </style>
 </Base>
