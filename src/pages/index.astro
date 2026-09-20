@@ -2,119 +2,179 @@
 import Base from '../layouts/Base.astro';
 import { site } from '../config';
 
-const careerLayers = [
-  ['01', 'Infrastructure', 'Servers, networks, operating systems', 'Learn the machine'],
-  ['02', 'Datacenter', 'Availability, incidents, physical consequence', 'Operate what matters'],
-  ['03', 'Cloud', 'Automation, capacity, reliability at scale', 'Design for change'],
-  ['04', 'Data platform', 'Security, continuity, cost, readiness', 'Connect the signals'],
-  ['05', 'Operations', 'Ownership, workflows, continuous improvement', 'Improve the system'],
-  ['06', 'AI-enabled operations', 'Evidence-led assistance inside real work', 'Support the decision'],
+const layers = [
+  { era: '1998', name: 'Infrastructure', context: 'Servers, networks, operating systems', question: 'What is the machine actually doing?' },
+  { era: '2005', name: 'Service operations', context: 'Availability, incidents, customer consequence', question: 'What happens when the service fails?' },
+  { era: '2011', name: 'Datacenter + cloud', context: 'Instrumentation, automation, safe change', question: 'How do we learn before production?' },
+  { era: '2020', name: 'Cloud operations', context: 'Capacity, supply, cost, continuous improvement', question: 'Where is pressure accumulating?' },
+  { era: '2022', name: 'Data platform', context: 'Reliability, security, continuity, economics', question: 'Can everyone see the same system?' },
+  { era: 'Now', name: 'AI-enabled operations', context: 'Telemetry, runbooks, bounded assistance', question: 'Which decision needs a better signal?' },
 ];
 
-const impactCases = [
+const records = [
   {
-    code: 'ECONOMICS / AZURE',
-    result: '$1M+',
-    resultLabel: 'annual platform savings',
-    problem: 'Recurring cloud spend was growing without enough engineering visibility.',
-    decision: 'Treat cost as an operating signal with owners, thresholds, and review cadence.',
-    change: 'Right-sized capacity, improved reservation strategy, automated visibility, and removed idle infrastructure.',
+    id: '01', label: 'Cloud economics', signal: '$1M+', suffix: 'annual Azure platform savings',
+    situation: 'Recurring infrastructure spend was growing faster than operational understanding.',
+    intervention: 'Made cost an engineering signal: capacity, reservations, idle resources, automation, ownership.',
+    consequence: 'Reduced annual platform spend while making the economics easier to operate.',
   },
   {
-    code: 'RELIABILITY / DATACENTER',
-    result: 'Test before scale',
-    resultLabel: 'first Azure instrumentation and pre-production lab',
-    problem: 'Infrastructure change carried uncertainty too close to production.',
-    decision: 'Create a realistic place for systems and teams to fail safely first.',
-    change: 'Established the first Azure Datacenter Instrumentation & Pre-Production Lab before broad rollout.',
+    id: '02', label: 'Reliability', signal: 'Pre-production', suffix: 'before global change',
+    situation: 'Infrastructure changes carried uncertainty too close to live Azure datacenters.',
+    intervention: 'Established the first Azure Datacenter Instrumentation & Pre-Production Lab.',
+    consequence: 'Moved failure into a place designed for testing, instrumentation, and learning.',
   },
   {
-    code: 'OPERATIONS / DATA',
-    result: 'Readiness by design',
-    resultLabel: 'operating discipline before release',
-    problem: 'Monitoring, continuity, and incident ownership arrived too late in delivery.',
-    decision: 'Move operational readiness into planning and engineering review.',
-    change: 'Connected telemetry, runbooks, ownership, privacy, security, and continuity around one platform view.',
+    id: '03', label: 'Platform operations', signal: 'One view', suffix: 'across engineering and operations',
+    situation: 'Reliability, security, privacy, continuity, and cost were managed as separate concerns.',
+    intervention: 'Connected telemetry, readiness, ownership, and review around the same platform.',
+    consequence: 'Made operational risk visible earlier and accountability less ambiguous.',
   },
 ];
 ---
 
 <Base>
   <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-grid">
+    <div class="hero-frame">
       <div class="hero-copy">
-        <p class="overline">Darshan Kansara <span>/</span> Technology operator + product builder</p>
-        <h1 id="hero-title">Built from the<br /><em>infrastructure up.</em></h1>
-        <p class="hero-lead">I work across the layers that keep technology useful: infrastructure, datacenters, cloud, data platforms, operations, and now AI connected to real evidence and decisions.</p>
-        <nav class="hero-links" aria-label="Start exploring">
-          <a href="#career">Follow the system <span aria-hidden="true">↓</span></a>
-          <a href="#built">See what I build <span aria-hidden="true">→</span></a>
-        </nav>
+        <p class="identity"><span>Darshan Kansara</span><span>Senior Manager, Platform Reliability &amp; Operations</span><span>Microsoft · Redmond</span></p>
+        <h1 id="hero-title">I learned technology where <em>failure is physical.</em></h1>
+        <p class="hero-deck">That lesson still shapes how I operate cloud platforms, improve reliability, work with AI, and build products of my own.</p>
+        <div class="hero-actions"><a href="#system">Trace the progression <span aria-hidden="true">↓</span></a><a href="#built">See what I build <span aria-hidden="true">→</span></a></div>
       </div>
 
-      <figure class="system-map" aria-labelledby="system-caption">
-        <div class="map-axis" aria-hidden="true"><span>System</span><span>Decision</span></div>
-        <svg viewBox="0 0 760 560" role="img" aria-label="Infrastructure, cloud, data and operational signals resolving into one accountable decision">
-          <g class="map-grid" fill="none"><path d="M32 72H728M32 176H728M32 280H728M32 384H728M32 488H728" /><path d="M92 32V528M212 32V528M332 32V528M452 32V528M572 32V528M692 32V528" /></g>
-          <g class="map-mesh" fill="none"><path d="M62 104L164 62 242 134 120 204 62 104Z" /><path d="M164 62L302 98 242 134" /><path d="M120 204L242 134 314 226 178 284 120 204Z" /><path d="M52 342L178 284 254 372 116 456 52 342Z" /><path d="M178 284L314 226 374 328 254 372" /><path d="M116 456L254 372 322 504" /><path d="M302 98L414 164 314 226" /><path d="M314 226L414 164 462 280 374 328Z" /><path d="M374 328L462 280 490 408 322 504" /></g>
-          <g class="map-nodes"><circle cx="62" cy="104" r="4"/><circle cx="164" cy="62" r="4"/><circle cx="242" cy="134" r="4"/><circle cx="120" cy="204" r="4"/><circle cx="302" cy="98" r="4"/><circle cx="314" cy="226" r="4"/><circle cx="178" cy="284" r="4"/><circle cx="52" cy="342" r="4"/><circle cx="254" cy="372" r="4"/><circle cx="116" cy="456" r="4"/><circle cx="322" cy="504" r="4"/><circle cx="414" cy="164" r="4"/><circle cx="462" cy="280" r="4"/><circle cx="374" cy="328" r="4"/><circle cx="490" cy="408" r="4"/></g>
-          <g class="signal-paths" fill="none"><path d="M62 104L242 134 314 226 462 280 548 280" /><path d="M52 342L178 284 374 328 462 280 548 280" /><path d="M116 456L254 372 490 408 548 280" /></g>
-          <g class="map-labels"><text x="52" y="88">infrastructure</text><text x="178" y="306">cloud</text><text x="322" y="522">operations</text><text x="448" y="260">signal</text></g>
-          <circle class="signal" cx="548" cy="280" r="8" /><path class="decision-line" d="M548 280H704" fill="none" /><circle class="decision" cx="704" cy="280" r="5" /><text class="decision-label" x="578" y="258">accountable decision</text>
+      <figure class="signal-field" aria-labelledby="signal-caption">
+        <svg viewBox="0 0 680 640" role="img" aria-label="A signal moving through infrastructure, cloud, data and operations toward an accountable decision">
+          <g class="field-grid"><path d="M20 80H660M20 176H660M20 272H660M20 368H660M20 464H660M20 560H660"/><path d="M84 24V616M196 24V616M308 24V616M420 24V616M532 24V616M644 24V616"/></g>
+          <path class="system-line" d="M70 520C122 486 128 402 194 390S272 430 322 352 376 214 446 236 506 318 550 224 582 120 630 92"/>
+          <path class="signal-line" d="M70 520C122 486 128 402 194 390S272 430 322 352 376 214 446 236 506 318 550 224 582 120 630 92"/>
+          <g class="field-nodes"><circle cx="70" cy="520" r="5"/><circle cx="194" cy="390" r="5"/><circle cx="322" cy="352" r="5"/><circle cx="446" cy="236" r="5"/><circle cx="550" cy="224" r="5"/><circle class="final-node" cx="630" cy="92" r="8"/></g>
+          <g class="field-labels"><text x="42" y="550">physical</text><text x="160" y="420">service</text><text x="286" y="382">cloud</text><text x="410" y="266">data</text><text x="514" y="254">operations</text><text class="final-label" x="500" y="72">decision</text></g>
+          <g class="field-notes"><text x="42" y="38">SYSTEM / SIGNAL / CONSEQUENCE</text><text x="42" y="600">1998</text><text x="602" y="600">NOW</text></g>
         </svg>
-        <figcaption id="system-caption">Complexity becomes useful when signal reaches a decision.</figcaption>
+        <figcaption id="signal-caption">The abstractions changed. The need for evidence did not.</figcaption>
       </figure>
     </div>
-    <dl class="proof" aria-label="Selected career evidence"><div><dt>25+</dt><dd>years across technology</dd></div><div><dt>2011</dt><dd>joined Microsoft</dd></div><div><dt>Still building</dt><dd>LifeLens + ApplyReady</dd></div></dl>
+
+    <div class="proof-line" aria-label="Career proof">
+      <p><strong>25+ years</strong><span>from physical infrastructure to AI-enabled operations</span></p>
+      <p><strong>Microsoft since 2011</strong><span>datacenter, cloud, continuous improvement, data platforms</span></p>
+      <p><strong>Still shipping</strong><span>LifeLens and ApplyReady</span></p>
+    </div>
   </section>
 
-  <section class="principle" aria-label="Operating principle"><p>Operator by career.</p><h2>Builder by instinct.</h2><p>The same habit runs through both: understand the system, expose the signal, and keep the consequential decision visible.</p></section>
+  <section id="system" class="system" aria-labelledby="system-title">
+    <div class="system-heading">
+      <p class="section-code">01 / The operating model</p>
+      <div><h2 id="system-title">The technology changed.<br />The questions accumulated.</h2><p>A career is not a list of roles. It is a set of instincts earned one layer at a time. Each layer below still informs the one above it.</p></div>
+    </div>
 
-  <section id="career" class="career" aria-labelledby="career-title">
-    <header class="section-intro"><div><span>Career architecture</span><small>1998 → today</small></div><h2 id="career-title">AI is the newest layer.<br />Not a new identity.</h2><p>Each chapter widened the operating view. Physical infrastructure taught consequence. Cloud added scale. Platforms connected reliability, cost, and ownership. AI now improves the signal inside that system.</p></header>
-    <ol class="career-stack">{careerLayers.map(([number, title, context, outcome]) => <li><span>{number}</span><strong>{title}</strong><p>{context}</p><small>{outcome}</small></li>)}</ol>
-    <a class="text-link" href="/experience">Explore the full progression <span aria-hidden="true">→</span></a>
+    <div class="layer-ledger">
+      <div class="layer-spine" aria-hidden="true"><span></span></div>
+      <ol>
+        {layers.map((layer, index) => (
+          <li style={`--step:${index}`}>
+            <span class="layer-era">{layer.era}</span>
+            <div class="layer-name"><small>Layer {String(index + 1).padStart(2, '0')}</small><h3>{layer.name}</h3></div>
+            <p>{layer.context}</p>
+            <blockquote>{layer.question}</blockquote>
+          </li>
+        ))}
+      </ol>
+    </div>
+    <a class="route-link" href="/experience">Read the complete career story <span aria-hidden="true">→</span></a>
   </section>
 
-  <section class="impact" aria-labelledby="impact-title">
-    <header class="impact-intro"><p>Selected evidence</p><h2 id="impact-title">The work changed because the system changed.</h2></header>
-    <div class="case-list">{impactCases.map((item, index) => <article><div class="case-result"><span>{item.code}</span><strong>{item.result}</strong><small>{item.resultLabel}</small></div><dl><div><dt>Problem</dt><dd>{item.problem}</dd></div><div><dt>Decision</dt><dd>{item.decision}</dd></div><div><dt>Change</dt><dd>{item.change}</dd></div></dl><span class="case-number">0{index + 1}</span></article>)}</div>
-    <a class="text-link" href="/impact">Read the evidence in detail <span aria-hidden="true">→</span></a>
-  </section>
-
-  <section class="intelligence" aria-labelledby="intelligence-title">
-    <div class="intelligence-copy"><p class="label">AI-enabled operations</p><h2 id="intelligence-title">Put intelligence inside the operating loop.</h2><p>AI becomes useful when it can see the evidence, understand the workflow, and support a bounded decision. The model is one component. The operating system around it is the product.</p><a class="text-link" href="/ai">How I think about applied AI <span aria-hidden="true">→</span></a></div>
-    <div class="operating-loop" aria-label="Operational intelligence flow"><div class="loop-inputs"><span>Telemetry</span><span>Incidents</span><span>Cost</span><span>Capacity</span><span>Runbooks</span></div><div class="loop-line" aria-hidden="true"></div><div class="loop-core"><small>Operational context</small><strong>Evidence + boundaries</strong><p>Connect what happened, what is known, and what remains uncertain.</p></div><div class="loop-line focus" aria-hidden="true"></div><div class="loop-outputs"><span>RCA acceleration</span><span>Runbook assistance</span><span>Cost action</span><span>Human decision</span></div></div>
+  <section class="operator-builder" aria-labelledby="builder-contrast-title">
+    <p class="section-code">02 / The useful contradiction</p>
+    <div class="contrast-line"><p>Operate systems at scale.</p><span aria-hidden="true"></span><p>Still build from zero.</p></div>
+    <h2 id="builder-contrast-title">The distance between those two keeps the judgment honest.</h2>
   </section>
 
   <section id="built" class="built" aria-labelledby="built-title">
-    <header class="built-intro"><p class="label">Evidence that I still build</p><h2 id="built-title">Ideas have to survive contact with a user.</h2><p>LifeLens and ApplyReady turn principles into working products: privacy, evidence, constraints, and decisions that remain with the person.</p></header>
-    <article class="product lifelens"><div class="product-visual phone-visual"><span>Android / live</span><img src="/lifelens/screen-1.png" alt="LifeLens Android home screen showing private photo analysis and cleanup choices" width="1080" height="2160" loading="lazy" decoding="async" /></div><div class="product-copy"><div class="product-name"><img src="/lifelens/icon.png" alt="" width="56" height="56" /><h3>LifeLens</h3></div><p class="product-line">Private photo intelligence that helps people understand clutter without uploading their library.</p><ul><li>On-device analysis</li><li>Review before removal</li><li>Uncertain means protect</li><li>English, Hindi, Gujarati</li></ul><a href="/lifelens">See the product story <span aria-hidden="true">→</span></a></div></article>
-    <article class="product applyready"><div class="product-copy"><div class="product-name"><span class="ar-mark">AR</span><h3>ApplyReady</h3></div><p class="product-line">Evidence-led role analysis before the rewriting begins.</p><ul><li>Deterministic browser analysis</li><li>Evidence and gaps separated</li><li>No invented experience</li><li>No account required</li></ul><a href="/applyready">See the product story <span aria-hidden="true">→</span></a></div><div class="product-visual applyready-visual"><span>Web / live</span><img src="/applyready/fit.png" alt="ApplyReady role-fit analysis showing evidence and resume gaps" width="1200" height="1200" loading="lazy" decoding="async" /></div></article>
+    <header class="built-heading"><p class="section-code">03 / Built, not presented</p><div><h2 id="built-title">Two products. One operating principle.</h2><p>Expose the evidence. Protect the person. Keep the consequential decision in human hands.</p></div></header>
+
+    <article class="product-story lifelens-story">
+      <div class="product-copy">
+        <p class="product-status"><span></span>Live on Android</p>
+        <div class="product-title"><img src="/lifelens/icon.png" alt="" width="60" height="60" /><h3>LifeLens</h3></div>
+        <p class="product-thesis">A private photo intelligence product for understanding clutter without surrendering the library.</p>
+        <dl><div><dt>The problem</dt><dd>Photo libraries grow faster than people can understand them.</dd></div><div><dt>The boundary</dt><dd>Analysis stays on device. Uncertainty means protect. Deletion requires review.</dd></div><div><dt>The build</dt><dd>Flutter, on-device intelligence, Android, English, Hindi, and Gujarati.</dd></div></dl>
+        <a href="/lifelens">Enter the LifeLens product story <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="phone-stage" aria-label="LifeLens product screens">
+        <img class="phone phone-one" src="/lifelens/screen-1.png" alt="LifeLens home screen showing a private photo library" width="1080" height="1920" loading="lazy" decoding="async" />
+        <img class="phone phone-two" src="/lifelens/screen-2.png" alt="LifeLens storage analysis in plain language" width="1080" height="1920" loading="lazy" decoding="async" />
+        <span>Real Android product</span>
+      </div>
+    </article>
+
+    <article class="product-story applyready-story">
+      <div class="apply-stage"><img src="/applyready/fit.png" alt="ApplyReady evidence-led role-fit comparison" width="1200" height="1200" loading="lazy" decoding="async" /><span>Real browser product</span></div>
+      <div class="product-copy">
+        <p class="product-status"><span></span>Live on the web</p>
+        <div class="product-title"><i aria-hidden="true">AR</i><h3>ApplyReady</h3></div>
+        <p class="product-thesis">A job-application workspace that asks whether the evidence supports applying before it starts rewriting.</p>
+        <dl><div><dt>The problem</dt><dd>Most tools optimize the document before testing the fit.</dd></div><div><dt>The boundary</dt><dd>No invented experience, no account gate, no stored resume text.</dd></div><div><dt>The build</dt><dd>Deterministic browser-side analysis with editable application outputs.</dd></div></dl>
+        <a href="/applyready">Enter the ApplyReady product story <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
   </section>
 
-  <section class="writing" aria-labelledby="writing-title"><header><p class="label">Field notes</p><h2 id="writing-title">Writing from inside the system.</h2></header><nav aria-label="Selected writing"><a href="/writing/reliability"><span>01 / Reliability</span><strong>Reliability is a product decision.</strong><b aria-hidden="true">→</b></a><a href="/writing/improvement"><span>02 / Improvement</span><strong>Continuous improvement is a way of seeing.</strong><b aria-hidden="true">→</b></a><a href="/writing/bounded-ai"><span>03 / Applied AI</span><strong>AI earns trust one bounded decision at a time.</strong><b aria-hidden="true">→</b></a></nav></section>
+  <section class="records" aria-labelledby="records-title">
+    <header class="records-heading"><p class="section-code">04 / Operating records</p><h2 id="records-title">Evidence is what remains after the title is removed.</h2></header>
+    <div class="record-list">
+      {records.map((record) => (
+        <article>
+          <header><span>{record.id}</span><p>{record.label}</p></header>
+          <div class="record-signal"><strong>{record.signal}</strong><small>{record.suffix}</small></div>
+          <dl><div><dt>Situation</dt><dd>{record.situation}</dd></div><div><dt>Intervention</dt><dd>{record.intervention}</dd></div><div><dt>Consequence</dt><dd>{record.consequence}</dd></div></dl>
+        </article>
+      ))}
+    </div>
+    <a class="route-link" href="/impact">Open the impact record <span aria-hidden="true">→</span></a>
+  </section>
 
-  <section class="closing" aria-labelledby="closing-title"><p>Darshan Kansara</p><h2 id="closing-title">The system is the story.</h2><div><p>Infrastructure. Platforms. Operations. Products.</p><nav aria-label="Contact and profile links"><a href="/contact">Contact</a><a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href={site.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div></section>
+  <section class="intelligence" aria-labelledby="intelligence-title">
+    <div class="intelligence-copy"><p class="section-code">05 / The newest layer</p><h2 id="intelligence-title">AI belongs inside the operating loop, not above it.</h2><p>Useful operational intelligence starts with telemetry and workflow context. It helps narrow a cause, retrieve a runbook, expose a cost signal, or frame a decision. It does not erase uncertainty or ownership.</p><a class="route-link" href="/ai">See the applied AI model <span aria-hidden="true">→</span></a></div>
+    <div class="decision-loop" aria-label="Operational AI decision loop">
+      <ol><li><span>01</span><strong>Observe</strong><small>Telemetry · incidents · cost</small></li><li><span>02</span><strong>Contextualize</strong><small>History · ownership · runbooks</small></li><li><span>03</span><strong>Assist</strong><small>Patterns · options · uncertainty</small></li><li><span>04</span><strong>Decide</strong><small>Human judgment remains visible</small></li></ol>
+      <svg viewBox="0 0 540 220" aria-hidden="true"><path d="M42 110H498"/><circle cx="42" cy="110" r="5"/><circle cx="194" cy="110" r="5"/><circle cx="346" cy="110" r="5"/><circle class="loop-end" cx="498" cy="110" r="8"/></svg>
+    </div>
+  </section>
+
+  <section class="notes" aria-labelledby="notes-title">
+    <header><p class="section-code">06 / Field notes</p><h2 id="notes-title">Written from inside the system.</h2></header>
+    <nav aria-label="Selected writing"><a href="/writing/reliability"><span>Reliability</span><strong>Reliability is a product decision.</strong><i aria-hidden="true">→</i></a><a href="/writing/improvement"><span>Improvement</span><strong>Continuous improvement is a way of seeing.</strong><i aria-hidden="true">→</i></a><a href="/writing/bounded-ai"><span>Applied AI</span><strong>AI earns trust one bounded decision at a time.</strong><i aria-hidden="true">→</i></a></nav>
+  </section>
+
+  <section class="close" aria-labelledby="close-title"><p class="section-code">Darshan Kansara / Redmond</p><h2 id="close-title">Systems worth understanding.<br />Work worth improving.<br />Ideas worth building.</h2><div><a href="/contact">Start with the real question <span aria-hidden="true">→</span></a><nav aria-label="External profiles"><a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href={site.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div></section>
 
   <style>
     :global(body){background:var(--ink)}
-    .hero,.principle,.career,.impact,.intelligence,.built,.writing,.closing{padding-inline:var(--pad)}
-    .hero{border-bottom:1px solid var(--line);overflow:hidden}.hero-grid,.proof,.principle,.section-intro,.career-stack,.career>.text-link,.impact-intro,.case-list,.impact>.text-link,.intelligence,.built-intro,.product,.writing>*,.closing>*{width:min(var(--max),100%);margin-inline:auto}
-    .hero-grid{min-height:calc(100svh - 212px);display:grid;grid-template-columns:minmax(0,.92fr) minmax(440px,1.08fr);gap:clamp(48px,7vw,104px);align-items:center;padding-block:clamp(48px,6vw,72px)}
-    .overline,.label,.section-intro span,.section-intro small,.impact-intro>p,.case-result>span,.case-result>small,.case-number,.product-visual>span,.closing>p{font-family:var(--font-mono);font-size:.64rem;line-height:1.4;letter-spacing:.08em;text-transform:uppercase}.overline{color:var(--muted);margin:0 0 24px}.overline span{color:var(--gold);padding-inline:8px}.hero h1{max-width:10ch;color:var(--paper);font-size:clamp(3.7rem,5.7vw,5.8rem);font-weight:400;line-height:.9;letter-spacing:0}.hero h1 em{color:var(--azure-bright);font-style:normal}.hero-lead{max-width:42rem;margin-top:28px;color:var(--muted);font-size:clamp(1rem,1.4vw,1.16rem);line-height:1.65}.hero-links{display:flex;gap:22px;margin-top:28px}.hero-links a,.text-link{color:var(--azure-bright);font-size:.84rem;font-weight:500}.hero-links a:first-child{color:var(--paper)}
-    .system-map{margin:0;min-width:0}.map-axis{display:flex;justify-content:space-between;color:var(--dim);font-family:var(--font-mono);font-size:.58rem;text-transform:uppercase}.system-map svg{display:block;width:100%;height:auto;margin-top:8px}.map-grid path{stroke:rgba(143,195,247,.09);stroke-width:1}.map-mesh path{stroke:#65758a;stroke-width:1.2;opacity:.55}.map-nodes{fill:#9ba9ba}.signal-paths{stroke:var(--azure);stroke-width:2;stroke-dasharray:10 13;animation:signal-flow 8s linear infinite}.signal{fill:var(--gold);filter:drop-shadow(0 0 8px rgba(198,161,90,.6))}.decision-line{stroke:var(--gold);stroke-width:2;stroke-dasharray:4 7}.decision{fill:var(--paper)}.map-labels,.decision-label{fill:#9ba9ba;font:11px var(--font-mono)}.system-map figcaption{text-align:right;color:var(--dim);font-family:var(--font-mono);font-size:.62rem}@keyframes signal-flow{to{stroke-dashoffset:-92}}
-    .proof{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.proof div{min-height:112px;padding:25px clamp(18px,3vw,34px);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:baseline;border-left:1px solid var(--line)}.proof div:last-child{border-right:1px solid var(--line)}.proof dt{color:var(--paper);font-family:var(--font-display);font-size:clamp(1.65rem,2.6vw,2.5rem);line-height:1}.proof dd{margin:0;color:var(--dim);font-size:.72rem;text-transform:uppercase}
-    .principle{padding-block:clamp(68px,8vw,108px);display:grid;grid-template-columns:var(--rail) 1fr 1fr;gap:var(--gutter);align-items:baseline;border-bottom:1px solid var(--line)}.principle>p:first-child{color:var(--gold);font-family:var(--font-mono);font-size:.64rem;text-transform:uppercase}.principle h2{color:var(--paper);font-size:clamp(2.4rem,4.5vw,4.2rem);font-weight:400;letter-spacing:0}.principle>p:last-child{color:var(--muted);max-width:46ch}
-    .career,.impact,.built,.writing{padding-block:var(--section);border-bottom:1px solid var(--line)}.section-intro{display:grid;grid-template-columns:var(--rail) 1.08fr .92fr;gap:var(--gutter);align-items:start}.section-intro>div{display:grid;gap:8px}.section-intro span,.label,.impact-intro>p,.closing>p{color:var(--gold)}.section-intro small{color:var(--dim)}.section-intro h2,.impact-intro h2,.intelligence h2,.built-intro h2,.writing h2,.closing h2{color:var(--paper);font-size:clamp(2.5rem,4.5vw,4.4rem);font-weight:400;line-height:1.02;letter-spacing:0}.section-intro>p,.built-intro>p:last-child{color:var(--muted)}
-    .career-stack{list-style:none;padding:0;margin-top:70px;display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.career-stack li{position:relative;min-height:245px;padding:24px 18px;display:flex;flex-direction:column;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.career-stack li::after{content:"";position:absolute;right:-4px;top:30px;width:7px;height:7px;border-radius:50%;background:var(--azure)}.career-stack li:last-child::after{right:18px;background:var(--gold)}.career-stack span,.career-stack small{font-family:var(--font-mono);font-size:.58rem;text-transform:uppercase;color:var(--dim)}.career-stack strong{margin-top:auto;color:var(--paper);font-size:.92rem;font-weight:500}.career-stack p{margin:10px 0 16px;color:var(--muted);font-size:.75rem;line-height:1.5}.career-stack small{color:var(--azure-bright)}.career>.text-link,.impact>.text-link{display:block;margin-top:36px}
-    .impact-intro{display:grid;grid-template-columns:var(--rail) 1fr;gap:var(--gutter);align-items:start}.impact-intro h2{max-width:17ch}.case-list{margin-top:64px;border-top:1px solid var(--line)}.case-list article{position:relative;display:grid;grid-template-columns:minmax(210px,.72fr) 1.28fr;gap:var(--gutter);padding:clamp(42px,5vw,68px) 0;border-bottom:1px solid var(--line)}.case-result{display:flex;flex-direction:column;min-height:220px;padding-left:18px;border-left:1px solid var(--accent-rule)}.case-result>span,.case-result>small{color:var(--dim)}.case-result strong{margin:auto 0 10px;color:var(--gold);font-family:var(--font-display);font-size:clamp(1.8rem,3.2vw,3rem);font-weight:400;line-height:1}.case-list dl{margin:0;display:grid;grid-template-columns:repeat(3,1fr)}.case-list dl div{padding:0 22px;border-left:1px solid var(--line)}.case-list dt{color:var(--azure);font-family:var(--font-mono);font-size:.61rem;text-transform:uppercase}.case-list dd{margin:11px 0 0;color:var(--muted);font-size:.85rem}.case-number{position:absolute;right:0;top:22px;color:rgba(232,237,243,.18)}
-    .intelligence{padding-block:var(--section);display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(54px,9vw,132px);align-items:center;border-bottom:1px solid var(--line)}.intelligence-copy>p:not(.label){color:var(--muted);max-width:55ch}.intelligence-copy .text-link{display:inline-block;margin-top:22px}.operating-loop{padding:28px;border:1px solid var(--line);background:rgba(232,237,243,.018)}.loop-inputs,.loop-outputs{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.loop-outputs{grid-template-columns:repeat(4,1fr)}.loop-inputs span,.loop-outputs span{padding:11px 7px;border:1px solid var(--line);color:var(--dim);font-family:var(--font-mono);font-size:.58rem;text-align:center}.loop-outputs span:last-child{border-color:var(--accent-rule);color:var(--gold)}.loop-line{width:1px;height:28px;margin-left:50%;background:var(--line)}.loop-line.focus{background:var(--gold)}.loop-core{padding:24px;border:1px solid rgba(77,154,235,.4);background:var(--azure-soft)}.loop-core small{color:var(--azure-bright);font-family:var(--font-mono);font-size:.6rem;text-transform:uppercase}.loop-core strong{display:block;margin-top:8px;color:var(--paper);font-family:var(--font-display);font-size:1.35rem}.loop-core p{margin:8px 0 0;color:var(--muted);font-size:.84rem}
-    .built-intro{display:grid;grid-template-columns:var(--rail) 1fr 1fr;gap:var(--gutter);align-items:start;margin-bottom:70px}.product{display:grid;grid-template-columns:.9fr 1.1fr;min-height:650px;border:1px solid var(--line)}.product+.product{margin-top:28px}.product-visual{position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;background:rgba(77,154,235,.1);padding:54px 36px 0}.product-visual>span{position:absolute;top:24px;left:24px;color:var(--dim)}.phone-visual img{width:min(100%,330px);height:auto;box-shadow:0 28px 80px rgba(0,0,0,.4)}.product-copy{align-self:center;padding:clamp(38px,6vw,76px)}.product-name{display:flex;align-items:center;gap:18px}.product-name img,.ar-mark{width:56px;height:56px}.product-name img{border-radius:8px}.ar-mark{display:grid;place-items:center;background:var(--paper);color:var(--ink);font-family:var(--font-mono);font-size:.72rem}.product h3{margin:0;color:var(--paper);font-size:clamp(2.8rem,5vw,4.8rem);font-weight:400}.product-line{margin:28px 0;color:var(--azure-bright);font-family:var(--font-display);font-size:clamp(1.2rem,2vw,1.65rem);line-height:1.35}.product ul{list-style:none;padding:0;margin:0 0 34px;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}.product li{padding:12px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:.82rem}.product li:nth-child(odd){padding-right:14px}.product a{display:inline-flex;padding:12px 16px;background:var(--paper);color:var(--ink);font-size:.82rem;font-weight:600}.applyready{grid-template-columns:1.1fr .9fr}.applyready-visual{align-items:center;padding:42px;background:var(--paper)}.applyready-visual img{width:100%;height:auto;box-shadow:0 18px 55px rgba(0,0,0,.18)}
-    .writing{display:grid;grid-template-columns:.72fr 1.28fr;gap:var(--gutter)}.writing header{margin:0}.writing nav{border-top:1px solid var(--line)}.writing nav a{display:grid;grid-template-columns:150px 1fr 20px;gap:22px;align-items:center;padding:25px 0;border-bottom:1px solid var(--line)}.writing nav span{color:var(--gold);font-family:var(--font-mono);font-size:.6rem;text-transform:uppercase}.writing nav strong{color:var(--paper);font-size:1rem;font-weight:500}.writing nav b{color:var(--azure);font-weight:400}
-    .closing{padding-block:clamp(78px,9vw,124px)}.closing h2{max-width:15ch}.closing>div{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-top:42px}.closing>div>p{margin:0;color:var(--muted)}.closing nav{display:flex;gap:20px}.closing nav a{color:var(--azure-bright);font-size:.84rem}
-    @media(max-width:1000px){.hero-grid{grid-template-columns:.95fr 1.05fr;min-height:calc(100svh - 212px);gap:34px}.hero h1{font-size:clamp(3.2rem,7vw,4.4rem)}.system-map{min-width:0}.career-stack{grid-template-columns:repeat(3,1fr)}.section-intro,.built-intro{grid-template-columns:150px 1fr}.section-intro>p,.built-intro>p:last-child{grid-column:2}.intelligence{grid-template-columns:1fr}.writing{grid-template-columns:1fr}.product{min-height:0}}
-    @media(max-width:700px){.hero-grid{grid-template-columns:1fr;min-height:auto;padding-block:34px 24px;gap:16px}.overline{margin-bottom:18px}.hero h1{font-size:clamp(3rem,13.2vw,3.55rem)}.hero-lead{margin-top:20px;font-size:.94rem;line-height:1.5}.hero-links{margin-top:20px}.system-map{height:170px;margin-top:0;overflow:hidden}.system-map .map-axis,.system-map figcaption{display:none}.system-map svg{height:170px;margin:0 auto}.proof{grid-template-columns:1fr 1fr}.proof div{min-height:76px;padding:14px}.proof div:last-child{grid-column:1/-1}.principle,.section-intro,.built-intro,.impact-intro{grid-template-columns:1fr;gap:18px}.principle{padding-block:64px}.principle h2{font-size:2.6rem}.career,.impact,.built,.writing{padding-block:76px}.section-intro>p,.built-intro>p:last-child{grid-column:auto}.career-stack{grid-template-columns:1fr;margin-top:44px}.career-stack li{min-height:128px}.career-stack li::after{right:18px}.case-list{margin-top:42px}.case-list article{grid-template-columns:1fr;gap:28px}.case-result{min-height:0}.case-result strong{margin:28px 0 8px}.case-list dl{grid-template-columns:1fr}.case-list dl div{padding:13px 0;border-left:0;border-top:1px solid var(--line)}.intelligence{padding-block:76px}.operating-loop{padding:18px}.loop-inputs{grid-template-columns:repeat(3,1fr)}.loop-outputs{grid-template-columns:1fr 1fr}.built-intro{margin-bottom:44px}.product,.applyready{grid-template-columns:1fr}.product-visual{min-height:510px}.applyready .product-copy{grid-row:2}.applyready-visual{grid-row:1;min-height:0;padding:22px}.product-copy{padding:38px 22px}.product ul{grid-template-columns:1fr}.writing nav a{grid-template-columns:1fr 20px;gap:7px}.writing nav span{grid-column:1/-1}.writing nav b{grid-column:2;grid-row:2}.closing>div{align-items:flex-start;flex-direction:column}.closing nav{flex-wrap:wrap}}
-    @media(prefers-reduced-motion:reduce){.signal-paths{animation:none}}
+    .hero,.system,.records,.operator-builder,.built,.intelligence,.notes,.close{padding-inline:var(--pad)}
+    .section-code,.identity,.layer-era,.layer-name small,.record-list header,.record-signal small,.product-status,.product-story dt,.phone-stage>span,.apply-stage>span,.decision-loop span,.decision-loop small,.notes nav span{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}
+    .section-code{color:var(--gold);margin:0}.route-link{display:inline-flex;gap:12px;color:var(--azure-bright);font-size:.84rem;font-weight:500}
+
+    .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 49.9%,var(--line) 50%,transparent 50.1%)}.hero-frame,.proof-line,.system-heading,.layer-ledger,.system>.route-link,.records-heading,.record-list,.records>.route-link,.operator-builder>*,.built-heading,.product-story,.intelligence,.notes>*,.close>*{width:min(var(--max),100%);margin-inline:auto}.hero-frame{min-height:calc(100svh - 204px);display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(50px,7vw,110px);align-items:center;padding-block:clamp(40px,5vw,64px)}.hero-copy{position:relative;z-index:1}.identity{display:flex;flex-wrap:wrap;gap:10px 22px;color:var(--dim);margin-bottom:clamp(28px,4vw,48px)}.identity span:first-child{color:var(--paper)}.hero h1{max-width:14ch;color:var(--paper);font-size:clamp(3.2rem,4.6vw,4.6rem);font-weight:400;line-height:.97;letter-spacing:0}.hero h1 em{color:var(--azure-bright);font-style:normal}.hero-deck{max-width:54ch;margin-top:24px;color:var(--muted);font-size:clamp(1rem,1.3vw,1.12rem);line-height:1.6}.hero-actions{display:flex;flex-wrap:wrap;gap:24px;margin-top:26px}.hero-actions a{color:var(--paper);font-size:.86rem}.hero-actions a:last-child{color:var(--azure-bright)}
+    .signal-field{margin:0;min-width:0}.signal-field svg{display:block;width:100%;height:auto}.field-grid{fill:none;stroke:rgba(143,195,247,.08);stroke-width:1}.system-line{fill:none;stroke:#65758a;stroke-width:1.25}.signal-line{fill:none;stroke:var(--azure);stroke-width:2.5;stroke-dasharray:12 16;animation:signal 8s linear infinite}.field-nodes{fill:#9ba9ba}.field-nodes .final-node{fill:var(--gold);filter:drop-shadow(0 0 8px rgba(198,161,90,.55))}.field-labels{fill:#9ba9ba;font:12px var(--font-mono)}.field-labels .final-label{fill:var(--gold)}.field-notes{fill:#66758a;font:10px var(--font-mono);letter-spacing:1px}.signal-field figcaption{text-align:right;color:var(--dim);font-family:var(--font-mono);font-size:.62rem}@keyframes signal{to{stroke-dashoffset:-112}}
+    .proof-line{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.proof-line p{min-height:104px;margin:0;padding:24px 26px;display:grid;align-content:center;gap:5px;border-inline-start:1px solid var(--line)}.proof-line p:last-child{border-inline-end:1px solid var(--line)}.proof-line strong{color:var(--paper);font-family:var(--font-display);font-size:1.18rem;font-weight:400}.proof-line span{color:var(--dim);font-size:.72rem}
+
+    .system{padding-block:var(--section);border-bottom:1px solid var(--line)}.system-heading{display:grid;grid-template-columns:var(--rail) 1fr;gap:var(--gutter)}.system-heading>div{display:grid;grid-template-columns:1.08fr .92fr;gap:var(--gutter);align-items:start}.system-heading h2,.records-heading h2,.operator-builder h2,.built-heading h2,.intelligence h2,.notes h2,.close h2{color:var(--paper);font-size:clamp(2.5rem,4.5vw,4.3rem);font-weight:400;line-height:1.02;letter-spacing:0}.system-heading>div>p,.built-heading>div>p,.intelligence-copy>p{color:var(--muted)}
+    .layer-ledger{position:relative;margin-top:clamp(62px,8vw,108px)}.layer-spine{position:absolute;left:calc(var(--rail) + var(--gutter) + 4px);top:0;bottom:0;width:1px;background:var(--line)}.layer-spine span{position:absolute;top:0;left:-2px;width:5px;height:100%;background:linear-gradient(var(--azure),var(--gold));transform-origin:top;opacity:.72}.layer-ledger ol{list-style:none;margin:0;padding:0}.layer-ledger li{display:grid;grid-template-columns:var(--rail) minmax(170px,.75fr) 1fr 1fr;gap:var(--gutter);align-items:center;min-height:130px;border-top:1px solid var(--line)}.layer-ledger li:last-child{border-bottom:1px solid var(--line)}.layer-ledger li::before{content:"";position:absolute;left:calc(var(--rail) + var(--gutter) + 1px);width:7px;height:7px;border-radius:50%;background:var(--azure);box-shadow:0 0 0 5px var(--ink)}.layer-ledger li:last-child::before{background:var(--gold)}.layer-era{color:var(--dim)}.layer-name small{color:var(--azure)}.layer-name h3{margin:7px 0 0;color:var(--paper);font-family:var(--font-sans);font-size:1rem;font-weight:500}.layer-ledger li>p{margin:0;color:var(--muted);font-size:.85rem}.layer-ledger blockquote{margin:0;color:var(--paper);font-family:var(--font-display);font-size:1.18rem;line-height:1.35}.system>.route-link,.records>.route-link{margin-top:34px}
+
+    .records{padding-block:var(--section);border-bottom:1px solid var(--line)}.records-heading{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);gap:var(--gutter)}.records-heading h2{max-width:16ch}.record-list{margin-top:70px}.record-list article{display:grid;grid-template-columns:var(--rail) .7fr 1.3fr;gap:var(--gutter);padding:clamp(48px,6vw,76px) 0;border-top:1px solid var(--line)}.record-list article:last-child{border-bottom:1px solid var(--line)}.record-list header{color:var(--dim)}.record-list header span{color:var(--gold)}.record-list header p{margin-top:10px}.record-signal{display:flex;flex-direction:column;justify-content:flex-end;min-height:170px;padding-left:18px;border-left:1px solid var(--accent-rule)}.record-signal strong{color:var(--paper);font-family:var(--font-display);font-size:clamp(2rem,3.4vw,3.25rem);font-weight:400;line-height:1}.record-signal small{margin-top:10px;color:var(--dim)}.record-list dl{margin:0;display:grid;grid-template-columns:repeat(3,1fr)}.record-list dl div{padding:0 18px;border-left:1px solid var(--line)}.record-list dt{color:var(--azure-bright);font-family:var(--font-mono);font-size:.61rem;text-transform:uppercase}.record-list dd{margin:10px 0 0;color:var(--muted);font-size:.84rem;line-height:1.62}
+
+    .operator-builder{padding-block:clamp(76px,10vw,150px);border-bottom:1px solid var(--line);background:rgba(143,195,247,.025)}.contrast-line{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;margin-top:46px;color:var(--azure-bright);font-family:var(--font-mono);font-size:.68rem;text-transform:uppercase}.contrast-line p{margin:0}.contrast-line span{height:1px;background:linear-gradient(90deg,var(--azure),var(--gold))}.operator-builder h2{max-width:18ch;margin-top:34px}
+
+    .built{padding-block:var(--section);border-bottom:1px solid var(--line)}.built-heading{display:grid;grid-template-columns:var(--rail) 1fr;gap:var(--gutter);margin-bottom:clamp(60px,8vw,100px)}.built-heading>div{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--gutter)}.product-story{display:grid;grid-template-columns:.88fr 1.12fr;min-height:680px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.product-story+.product-story{margin-top:64px}.product-copy{align-self:center;padding:clamp(38px,6vw,76px) clamp(0px,4vw,58px) clamp(38px,6vw,76px) 0}.product-status{display:flex;align-items:center;gap:9px;color:var(--dim)}.product-status span{width:7px;height:7px;border-radius:50%;background:#62c995;box-shadow:0 0 0 5px rgba(98,201,149,.1)}.product-title{display:flex;align-items:center;gap:18px;margin-top:25px}.product-title img,.product-title i{width:60px;height:60px}.product-title img{border-radius:8px}.product-title i{display:grid;place-items:center;background:var(--paper);color:var(--ink);font:normal .72rem var(--font-mono)}.product-title h3{margin:0;color:var(--paper);font-size:clamp(2.8rem,5vw,4.8rem);font-weight:400}.product-thesis{margin:30px 0;color:var(--azure-bright);font-family:var(--font-display);font-size:clamp(1.25rem,2vw,1.7rem);line-height:1.36}.product-copy dl{margin:0;border-top:1px solid var(--line)}.product-copy dl div{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:14px 0;border-bottom:1px solid var(--line)}.product-story dt{color:var(--gold)}.product-story dd{margin:0;color:var(--muted);font-size:.82rem}.product-copy>a{display:inline-flex;margin-top:30px;color:var(--paper);font-size:.84rem}.phone-stage,.apply-stage{position:relative;overflow:hidden}.phone-stage{min-height:680px;background:linear-gradient(145deg,rgba(77,154,235,.12),rgba(198,161,90,.05));border-left:1px solid var(--line)}.phone-stage .phone{position:absolute;width:min(42%,330px);height:auto;box-shadow:0 30px 80px rgba(0,0,0,.42)}.phone-one{left:15%;top:12%}.phone-two{right:11%;top:23%}.phone-stage>span,.apply-stage>span{position:absolute;right:22px;bottom:18px;color:var(--dim)}.applyready-story{grid-template-columns:1.12fr .88fr}.applyready-story .product-copy{padding-left:clamp(38px,6vw,76px);padding-right:0}.apply-stage{display:grid;place-items:center;padding:clamp(28px,5vw,64px);background:var(--paper)}.apply-stage img{width:100%;height:auto;box-shadow:0 18px 54px rgba(8,17,31,.18)}.apply-stage>span{color:#526174}
+
+    .intelligence{padding-block:var(--section);display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(50px,8vw,120px);align-items:center;border-bottom:1px solid var(--line)}.intelligence-copy>p:not(.section-code){max-width:56ch}.intelligence-copy .route-link{margin-top:20px}.decision-loop{position:relative;padding:26px;border:1px solid var(--line)}.decision-loop ol{position:relative;z-index:1;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.decision-loop li{min-height:150px;padding:14px;display:flex;flex-direction:column;background:var(--ink-2);border:1px solid var(--line)}.decision-loop span{color:var(--gold)}.decision-loop strong{margin-top:auto;color:var(--paper);font-size:.86rem;font-weight:500}.decision-loop small{margin-top:7px;color:var(--dim);line-height:1.4;text-transform:none}.decision-loop svg{display:block;width:100%;height:auto;margin-top:-50px}.decision-loop path{stroke:var(--azure);stroke-width:1.5;stroke-dasharray:5 8}.decision-loop circle{fill:var(--azure)}.decision-loop .loop-end{fill:var(--gold)}
+
+    .notes{padding-block:var(--section);border-bottom:1px solid var(--line);display:grid;grid-template-columns:.7fr 1.3fr;gap:var(--gutter)}.notes header{margin:0}.notes nav{border-top:1px solid var(--line)}.notes nav a{display:grid;grid-template-columns:120px 1fr 20px;gap:20px;align-items:center;min-height:86px;border-bottom:1px solid var(--line)}.notes nav span{color:var(--gold)}.notes nav strong{color:var(--paper);font-size:.96rem;font-weight:500}.notes nav i{color:var(--azure);font-style:normal}.close{padding-block:clamp(86px,11vw,164px)}.close h2{max-width:17ch;margin-top:32px}.close>div{display:flex;justify-content:space-between;align-items:center;gap:30px;margin-top:44px}.close>div>a{color:var(--paper)}.close nav{display:flex;gap:22px}.close nav a{color:var(--azure-bright);font-size:.84rem}
+
+    @media(max-width:1000px){.hero-frame{grid-template-columns:1fr 1fr;gap:34px}.hero h1{font-size:clamp(2.85rem,5.7vw,3.8rem)}.system-heading>div,.built-heading>div{grid-template-columns:1fr}.layer-ledger li{grid-template-columns:110px minmax(150px,.7fr) 1fr}.layer-ledger blockquote{grid-column:2/-1;padding-bottom:20px}.layer-spine{left:calc(110px + var(--gutter) + 4px)}.layer-ledger li::before{left:calc(110px + var(--gutter) + 1px)}.record-list article{grid-template-columns:110px .7fr 1.3fr}.record-list dl{grid-template-columns:1fr}.record-list dl div{padding:10px 0;border-left:0;border-top:1px solid var(--line)}.product-story{min-height:580px}.phone-stage{min-height:580px}.intelligence{grid-template-columns:1fr}.notes{grid-template-columns:1fr}}
+    @media(max-width:700px){.hero::before{display:none}.hero-frame{min-height:auto;grid-template-columns:1fr;padding-block:36px 24px;gap:20px}.identity{margin-bottom:28px;gap:6px 14px}.identity span:nth-child(2){width:100%}.hero h1{font-size:clamp(3rem,13vw,3.65rem)}.hero-deck{margin-top:22px}.signal-field{height:190px;overflow:hidden}.signal-field svg{height:220px;width:auto;margin:-12px auto 0}.signal-field figcaption{display:none}.proof-line{grid-template-columns:1fr}.proof-line p{min-height:74px;padding:14px;border-right:1px solid var(--line)}.system,.records,.built,.intelligence,.notes{padding-block:78px}.system-heading,.records-heading,.built-heading{grid-template-columns:1fr;gap:18px}.system-heading h2,.records-heading h2,.operator-builder h2,.built-heading h2,.intelligence h2,.notes h2,.close h2{font-size:clamp(2.45rem,11vw,3.2rem)}.layer-ledger{margin-top:46px}.layer-spine{left:4px}.layer-ledger li{position:relative;grid-template-columns:76px 1fr;gap:10px 20px;padding:22px 0 22px 22px}.layer-ledger li::before{left:1px}.layer-name{grid-column:2}.layer-ledger li>p,.layer-ledger blockquote{grid-column:2}.layer-ledger blockquote{padding-bottom:0}.record-list{margin-top:42px}.record-list article{grid-template-columns:1fr;gap:22px}.record-list header{display:flex;gap:14px}.record-signal{min-height:0}.record-list dl{grid-template-columns:1fr}.contrast-line{grid-template-columns:1fr;gap:12px}.contrast-line span{width:100%}.built-heading>div{grid-template-columns:1fr}.product-story,.applyready-story{grid-template-columns:1fr;min-height:0}.product-copy,.applyready-story .product-copy{padding:42px 0}.phone-stage{min-height:500px;border-left:0;border-top:1px solid var(--line)}.applyready-story .apply-stage{grid-row:1;min-height:340px}.applyready-story .product-copy{grid-row:2}.product-copy dl div{grid-template-columns:90px 1fr}.decision-loop{padding:14px}.decision-loop ol{grid-template-columns:1fr 1fr}.decision-loop li{min-height:120px}.decision-loop svg{display:none}.notes nav a{grid-template-columns:1fr 20px;gap:6px;padding:18px 0}.notes nav span{grid-column:1/-1}.notes nav i{grid-column:2;grid-row:2}.close>div{align-items:flex-start;flex-direction:column}.close nav{flex-wrap:wrap}}
+    @media(prefers-reduced-motion:reduce){.signal-line{animation:none}}
   </style>
 </Base>

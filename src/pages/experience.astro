@@ -1,104 +1,50 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site } from '../config';
 ---
-<Base title="Experience" description="Darshan Kansara's progression from infrastructure and datacenter operations to cloud, data platforms, and applied AI.">
-    <header class="experience-hero">
-      <div class="experience-title"><p class="eyebrow">Experience</p><h1>Learn the system.<br />Then make it simpler.</h1></div>
-      <div class="experience-summary">
-        <p class="intro">{site.yearsExperience} years across infrastructure, cloud, and data platforms. The roles changed. The work kept returning to the same question: how can a complex system become easier to understand and improve?</p>
-      </div>
-    </header>
+<Base title="System" description="Darshan Kansara's progression from physical infrastructure and datacenter operations to cloud, data platforms, and AI-enabled operations.">
+  <header class="route-hero">
+    <p class="route-code">System / 1998 → now</p>
+    <div><h1>The abstractions changed.<br /><em>The responsibility did not.</em></h1><p>Servers became services. Datacenters became cloud regions. Platforms became operating systems for the business. Each layer widened the view without erasing the one beneath it.</p></div>
+  </header>
 
-    <section class="chapter current">
-      <div class="chapter-meta"><span>2022—Today</span><span>Microsoft</span></div>
-      <div class="chapter-copy">
-        <p class="role">Senior Manager · Platform Reliability &amp; Operations</p>
-        <h2>Operating the data platform as a product.</h2>
-        <p>Leading reliability, security, infrastructure, continuity, and cost discipline for a business-critical cloud marketing data platform built on Azure services including Synapse, Cosmos DB, and Fabric.</p>
-        <ul>
-          <li><strong>$1M+ platform spend reduction</strong><span>Capacity optimization, automation, and removal of recurring inefficiency.</span></li>
-          <li><strong>Stronger operating signals</strong><span>Clearer monitoring, incident response, and readiness practices across the platform.</span></li>
-          <li><strong>Shared accountability</strong><span>Engineering, privacy, security, compliance, and operations working against one system view.</span></li>
-          <li><strong>AI-enabled operations</strong><span>Telemetry, runbook context, and cost signals shaped into bounded operational assistance.</span></li>
-        </ul>
-      </div>
+  <nav class="era-index" aria-label="Career chapters"><a href="#now"><span>Now</span>Data platform</a><a href="#improvement"><span>2020</span>Cloud operations</a><a href="#cloud"><span>2011</span>Datacenter + cloud</a><a href="#service"><span>2005</span>Service delivery</a><a href="#foundation"><span>1998</span>Infrastructure</a></nav>
+
+  <div class="career-record">
+    <section id="now" class="chapter current">
+      <aside><span>2022—Today</span><strong>Microsoft</strong><small>Layer 05</small></aside>
+      <div class="chapter-body"><p class="role">Senior Manager · Platform Reliability &amp; Operations</p><h2>Operate the data platform as a product.</h2><p>Leading reliability, security, infrastructure, continuity, and cost discipline for a business-critical cloud marketing data platform built on Azure services including Synapse, Cosmos DB, and Fabric.</p><blockquote>Can engineering, privacy, security, compliance, and operations see the same system?</blockquote><dl><div><dt>Economics</dt><dd>$1M+ annual platform spend reduction through capacity optimization, automation, and removal of recurring inefficiency.</dd></div><div><dt>Signals</dt><dd>Clearer monitoring, incident response, and readiness practices across the platform.</dd></div><div><dt>Current edge</dt><dd>Telemetry, runbook context, and cost signals shaped into bounded operational assistance.</dd></div></dl></div>
     </section>
 
-    <section class="chapter">
-      <div class="chapter-meta"><span>2020—2022</span><span>Microsoft</span></div>
-      <div class="chapter-copy">
-        <p class="role">Senior Program Manager · Cloud Operations &amp; Continuous Improvement</p>
-        <h2>Turning capacity pressure into an improvement system.</h2>
-        <p>Connected demand forecasting, spares planning, finance, and supply-chain decisions so teams could see cost and operational risk earlier. Lean and Kaizen methods became practical tools for removing delay and repeated work, not presentation language.</p>
-      </div>
+    <section id="improvement" class="chapter">
+      <aside><span>2020—2022</span><strong>Microsoft</strong><small>Layer 04</small></aside>
+      <div class="chapter-body"><p class="role">Senior Program Manager · Cloud Operations &amp; Continuous Improvement</p><h2>Turn capacity pressure into an improvement system.</h2><p>Connected demand forecasting, spares planning, finance, and supply-chain decisions so cost and operational risk could appear earlier. Lean and Kaizen became tools for removing recurring delay, not presentation language.</p><blockquote>Where is pressure accumulating, and who can act before it becomes failure?</blockquote></div>
     </section>
 
-    <section class="chapter">
-      <div class="chapter-meta"><span>2011—2020</span><span>Microsoft</span></div>
-      <div class="chapter-copy">
-        <p class="role">Datacenter Strategy, Automation &amp; Reliability Leadership</p>
-        <h2>Making cloud infrastructure safer to change.</h2>
-        <p>Worked across Azure datacenter tooling, critical-environment IT, automation, and global operations as cloud scale accelerated. Established the first Azure Datacenter Instrumentation &amp; Pre-Production Lab so infrastructure changes could be tested before broad rollout.</p>
-        <blockquote>Reliability improved when uncertainty moved out of production and into a place designed for learning.</blockquote>
-      </div>
+    <section id="cloud" class="chapter">
+      <aside><span>2011—2020</span><strong>Microsoft</strong><small>Layer 03</small></aside>
+      <div class="chapter-body"><p class="role">Datacenter Strategy, Automation &amp; Reliability Leadership</p><h2>Move uncertainty out of production.</h2><p>Worked across Azure datacenter tooling, critical-environment IT, automation, and global operations as cloud scale accelerated. Established the first Azure Datacenter Instrumentation &amp; Pre-Production Lab so infrastructure changes could be tested before broad rollout.</p><blockquote>How can the system fail somewhere designed for learning first?</blockquote></div>
     </section>
 
-    <section class="chapter">
-      <div class="chapter-meta"><span>2005—2011</span><span>TCS · Microsoft engagement</span></div>
-      <div class="chapter-copy">
-        <p class="role">Service Delivery &amp; IT Operations</p>
-        <h2>Learning consequence through customer-facing services.</h2>
-        <p>Owned service delivery and datacenter operations for Microsoft online services across India and Redmond. Availability, incident response, and service-level commitments made the relationship between technical choices and customer experience impossible to ignore.</p>
-      </div>
+    <section id="service" class="chapter">
+      <aside><span>2005—2011</span><strong>TCS · Microsoft</strong><small>Layer 02</small></aside>
+      <div class="chapter-body"><p class="role">Service Delivery &amp; IT Operations</p><h2>Learn consequence through customer-facing services.</h2><p>Owned service delivery and datacenter operations for Microsoft online services across India and Redmond. Availability, incident response, and service-level commitments made the relationship between technical choices and customer experience impossible to ignore.</p><blockquote>What does technical failure mean to the person waiting for the service?</blockquote></div>
     </section>
 
-    <section class="chapter foundation">
-      <div class="chapter-meta"><span>1998—2005</span><span>India</span></div>
-      <div class="chapter-copy">
-        <p class="role">Infrastructure &amp; Networking</p>
-        <h2>The foundation was physical.</h2>
-        <p>Servers, networks, operating systems, and the hands-on work beneath the service. That proximity to the machine shaped an enduring preference: understand what the abstraction is hiding before deciding how to improve it.</p>
-      </div>
+    <section id="foundation" class="chapter">
+      <aside><span>1998—2005</span><strong>India</strong><small>Layer 01</small></aside>
+      <div class="chapter-body"><p class="role">Infrastructure &amp; Networking</p><h2>The foundation was physical.</h2><p>Servers, networks, operating systems, and the hands-on work beneath the service. Proximity to the machine created an enduring preference: understand what the abstraction is hiding before deciding how to improve it.</p><blockquote>What is the machine actually doing?</blockquote></div>
     </section>
+  </div>
 
-    <section class="credentials">
-      <div><p class="eyebrow">Credentials</p><h2>Formal learning, kept in proportion.</h2></div>
-      <div class="credential-copy">
-        <p><strong>PMP · PMI-ACP · ITIL v3 · CDCP · CDCS</strong><br />Program leadership, agile practice, service management, and datacenter disciplines.</p>
-        <p><strong>MCSE · CCNA · HP PSE · CNE</strong><br />The infrastructure and networking foundation.</p>
-        <p><strong>Post Graduate Diploma in Information Technology</strong><br />Sikkim Manipal University, India</p>
-        <p><strong>Diploma in Computer Engineering</strong><br />Gujarat State Technical Board, India</p>
-      </div>
-    </section>
+  <section class="credentials"><p class="route-code">Formal foundation</p><div><h2>Credentials, kept in proportion.</h2><p>PMP · PMI-ACP · ITIL v3 · CDCP · CDCS</p><p>MCSE · CCNA · HP PSE · CNE</p><p>Post Graduate Diploma in Information Technology · Diploma in Computer Engineering</p></div></section>
+  <section class="next"><p>The progression explains the method.</p><h2>The evidence shows whether it worked.</h2><div><a href="/impact">Open the evidence →</a><a href="/projects">See what I build →</a></div></section>
 
-    <section class="closing">
-      <p class="eyebrow">What the timeline leaves behind</p>
-      <h2>The work is not a list of roles. It is a widening view of the system.</h2>
-      <div><a href="/impact">See the evidence <span aria-hidden="true">&rarr;</span></a><a href="/projects">See what I build <span aria-hidden="true">&rarr;</span></a></div>
-    </section>
   <style>
-    main{background:var(--paper)}
-    .experience-hero{padding:clamp(72px,9vw,110px) max(var(--pad),calc((100vw - var(--max))/2));background:var(--ink);color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,8vw,120px);align-items:end}.eyebrow{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:#7ebaff}.experience-hero h1{font-size:clamp(3.2rem,5.5vw,5.4rem);line-height:.96;letter-spacing:-.04em;color:#fff;max-width:12ch;margin-top:26px}.intro{font-family:var(--font-display);font-size:clamp(1.08rem,1.7vw,1.3rem);line-height:1.55;color:#b9c6d7;max-width:620px}.hero-facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:44px;border-top:1px solid var(--line-dark)}.hero-facts div{padding:20px 16px 0 0;display:grid;gap:5px}.hero-facts strong{font-family:var(--font-display);font-size:1.55rem;line-height:1}.hero-facts span{font-size:.7rem;color:#8796aa;max-width:15ch}
-    .chapter{width:min(var(--max),calc(100% - 2 * var(--pad)));margin:auto;display:grid;grid-template-columns:190px 1fr;gap:clamp(34px,7vw,96px);padding:clamp(62px,7vw,86px) 0;border-bottom:1px solid var(--line)}.chapter-meta{display:flex;flex-direction:column;gap:7px;font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;color:var(--muted)}.chapter-meta span:first-child{color:var(--azure)}.chapter-copy{max-width:820px}.role{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:#86662a}.chapter h2,.credentials h2,.closing h2{font-size:clamp(1.9rem,3.4vw,3.15rem);line-height:1.06;letter-spacing:-.03em;margin:18px 0 24px}.chapter-copy>p:last-of-type{font-size:1.02rem;color:var(--muted);max-width:67ch}.chapter ul{list-style:none;margin:36px 0 0;padding:0;border-top:1px solid var(--line)}.chapter li{display:grid;grid-template-columns:minmax(180px,.75fr) 1.25fr;gap:28px;padding:18px 0;border-bottom:1px solid var(--line)}.chapter li span{color:var(--muted);font-size:.88rem}.chapter blockquote{margin:34px 0 0;padding:0 0 0 24px;border-left:2px solid var(--azure);font-family:var(--font-display);font-size:clamp(1.25rem,2vw,1.65rem);line-height:1.4;color:#2f5c96;max-width:28ch}.foundation{border-bottom:0}
-    .credentials{padding:clamp(68px,8vw,96px) var(--pad);background:var(--white);display:grid;grid-template-columns:minmax(260px,.8fr) 1.2fr;gap:clamp(44px,8vw,110px)}.credentials>div{max-width:650px}.credentials .eyebrow{color:#916d2c}.credentials h2{margin-bottom:0}.credential-copy p{padding:18px 0;margin:0;border-top:1px solid var(--line);color:var(--muted)}.credential-copy p:last-child{border-bottom:1px solid var(--line)}.credential-copy strong{color:var(--text)}
-    .closing{padding:clamp(72px,8vw,98px) var(--pad);background:#10233e;color:#fff}.closing>*{width:min(var(--max),100%);margin-left:auto;margin-right:auto}.closing h2{color:#fff;max-width:20ch}.closing div{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}.closing a{padding:13px 18px;border:1px solid rgba(255,255,255,.24);color:#fff;font-weight:600}.closing a:first-child{background:#fff;color:var(--ink)}
-    @media(max-width:760px){.experience-hero{grid-template-columns:1fr;padding-top:54px;padding-bottom:58px;gap:30px}.experience-hero h1{font-size:clamp(2.75rem,12vw,3.7rem);margin-top:20px}.intro{font-size:1rem}.hero-facts{margin-top:28px}.chapter{grid-template-columns:1fr;gap:24px}.chapter-meta{flex-direction:row;justify-content:space-between}.chapter li{grid-template-columns:1fr;gap:7px}.credentials{grid-template-columns:1fr}.closing div{flex-direction:column}.closing a{text-align:center}}
-  </style>
-  <style>
-    :global(body),main{background:var(--ink);color:var(--text)}
-    .experience-hero{min-height:68vh;background:transparent;color:var(--text);border-bottom:1px solid var(--line);align-items:end}
-    .eyebrow{color:var(--gold);letter-spacing:.08em}.experience-hero h1{color:var(--paper);font-size:clamp(3.4rem,6.8vw,6.8rem);font-weight:400;letter-spacing:0;line-height:.88}
-    .intro{font-family:var(--font-sans);color:var(--muted);font-size:clamp(1rem,1.5vw,1.2rem)}
-    .hero-facts{border-color:var(--line)}.hero-facts strong{color:var(--paper);font-weight:400}.hero-facts span{color:var(--dim)}
-    .chapter{position:relative;grid-template-columns:var(--rail) 1fr;border-color:var(--line);padding:clamp(66px,8vw,108px) 0}
-    .chapter::before{content:"";position:absolute;left:calc(var(--rail) + (var(--gutter) / 2));top:0;bottom:0;width:1px;background:var(--line)}
-    .chapter-meta{position:relative;color:var(--dim);letter-spacing:.06em}.chapter-meta::after{content:"";position:absolute;top:8px;right:calc(var(--gutter) / -2 - 4px);width:7px;height:7px;border-radius:50%;background:var(--ink);border:1px solid var(--gold)}.chapter-meta span:first-child{color:var(--gold)}
-    .role{color:var(--azure);letter-spacing:.06em}.chapter h2,.credentials h2,.closing h2{color:var(--paper);font-weight:400;letter-spacing:0}
-    .chapter-copy>p:last-of-type,.chapter li span{color:var(--muted)}.chapter ul,.chapter li{border-color:var(--line)}.chapter blockquote{color:var(--azure-bright);border-color:var(--azure);font-weight:400}
-    .credentials,.closing{background:transparent;color:var(--text);border-top:1px solid var(--line)}
-    .credentials{grid-template-columns:var(--rail) 1fr}.credentials .eyebrow{color:var(--gold)}.credential-copy p{border-color:var(--line);color:var(--muted)}.credential-copy strong{color:var(--paper)}
-    .closing h2{color:var(--paper)}.closing a{border-color:var(--line);color:var(--paper);font-weight:500}.closing a:first-child{background:var(--paper);color:var(--ink)}
-    @media(max-width:760px){.chapter::before,.chapter-meta::after{display:none}.experience-hero{min-height:auto}.credentials{grid-template-columns:1fr}}
+    :global(body),:global(main){background:var(--ink);color:var(--text)}.route-code,.role,.chapter aside,.chapter dt{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}.route-code{color:var(--gold)}
+    .route-hero,.era-index,.career-record,.credentials,.next>*{width:min(var(--max),calc(100% - 2 * var(--pad)));margin-inline:auto}.route-hero{min-height:calc(78svh - 100px);padding-block:clamp(70px,9vw,118px);display:grid;grid-template-columns:var(--rail) 1fr;gap:var(--gutter);align-items:end;border-bottom:1px solid var(--line)}.route-hero h1{max-width:17ch;color:var(--paper);font-size:clamp(3.2rem,5vw,5rem);font-weight:400;line-height:.98}.route-hero h1 em{color:var(--azure-bright);font-style:normal}.route-hero div>p{max-width:58ch;color:var(--muted);font-size:1.08rem}
+    .era-index{display:grid;grid-template-columns:repeat(5,1fr);border-left:1px solid var(--line)}.era-index a{min-height:82px;padding:17px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--paper);font-size:.78rem}.era-index span{display:block;margin-bottom:5px;color:var(--gold);font: .58rem var(--font-mono)}
+    .career-record{position:relative}.career-record::before{content:"";position:absolute;left:calc(var(--rail) + var(--gutter) - 1px);top:0;bottom:0;width:1px;background:linear-gradient(var(--gold),var(--azure),var(--line))}.chapter{position:relative;display:grid;grid-template-columns:var(--rail) 1fr;gap:var(--gutter);padding:clamp(64px,8vw,108px) 0;border-bottom:1px solid var(--line)}.chapter::before{content:"";position:absolute;left:calc(var(--rail) + var(--gutter) - 4px);top:72px;width:7px;height:7px;border-radius:50%;background:var(--azure);box-shadow:0 0 0 6px var(--ink)}.chapter.current::before{background:var(--gold)}.chapter aside{display:flex;flex-direction:column;gap:6px;color:var(--dim)}.chapter aside span{color:var(--gold)}.chapter aside small{margin-top:24px}.chapter-body{max-width:880px}.role{color:var(--azure-bright)}.chapter h2,.credentials h2,.next h2{color:var(--paper);font-size:clamp(2.2rem,3.8vw,3.65rem);font-weight:400;letter-spacing:0}.chapter-body>p:not(.role){max-width:66ch;color:var(--muted);font-size:1.02rem}.chapter blockquote{margin:34px 0 0;padding-left:22px;border-left:2px solid var(--gold);color:var(--paper);font-family:var(--font-display);font-size:clamp(1.2rem,2vw,1.6rem)}.chapter dl{margin:42px 0 0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.chapter dl div{padding:20px 18px 0 0}.chapter dt{color:var(--gold)}.chapter dd{margin:8px 0 0;color:var(--muted);font-size:.82rem}
+    .credentials{padding-block:var(--section);display:grid;grid-template-columns:var(--rail) 1fr;gap:var(--gutter)}.credentials>div{display:grid;grid-template-columns:1.2fr 1fr;gap:16px var(--gutter)}.credentials h2{grid-row:1/4}.credentials p{margin:0;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem}.next{padding-block:clamp(76px,9vw,118px);border-top:1px solid var(--line)}.next>p{color:var(--gold);font: .62rem var(--font-mono);text-transform:uppercase}.next h2{max-width:18ch}.next>div{display:flex;gap:22px;margin-top:28px}.next a{color:var(--azure-bright)}
+    @media(max-width:760px){.route-hero{min-height:auto;grid-template-columns:1fr;gap:20px}.route-hero h1{font-size:clamp(2.8rem,12vw,3.6rem)}.era-index{grid-template-columns:1fr 1fr}.career-record::before{left:4px}.chapter{grid-template-columns:1fr;padding-left:24px}.chapter::before{left:1px}.chapter aside{flex-direction:row;flex-wrap:wrap}.chapter aside small{width:100%;margin-top:3px}.chapter dl{grid-template-columns:1fr}.credentials{grid-template-columns:1fr}.credentials>div{grid-template-columns:1fr}.credentials h2{grid-row:auto}.next>div{flex-direction:column}}
   </style>
 </Base>

@@ -1,50 +1,29 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getCollection } from 'astro:content';
-
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
-<Base title="Built" description="LifeLens and ApplyReady: products built by Darshan Kansara around safer, more legible decisions.">
-    <header class="project-hero">
-      <div><p class="eyebrow">Built</p><h1>Things I actually made.</h1></div>
-      <p>Two live products. Different domains. One shared standard: show the evidence, protect the user, and keep the consequential decision visible.</p>
-    </header>
+<Base title="Built" description="LifeLens and ApplyReady are working products built by Darshan Kansara around private intelligence, visible evidence, and human control.">
+  <header class="built-hero"><p class="code">Built / working products</p><div><h1>I still build.</h1><p>Operating large systems can make technology abstract. Building from zero brings the constraints back: one person, one interface, one decision that has to work.</p></div></header>
 
-    <div class="project-list">
-      {projects.map((project, index) => (
-        <article>
-          <div class="project-index"><span>0{index + 1}</span><span>{project.data.status}</span></div>
-          <div class:list={['project-visual', project.slug]}>
-            {project.slug === 'lifelens' ? (
-              <img src="/lifelens/screen-2.png" alt="LifeLens showing an on-device storage analysis" width="1080" height="1920" loading="lazy" decoding="async" />
-            ) : (
-              <img src="/applyready/fit.png" alt="ApplyReady comparing generic application material with evidence-led role fit" width="1200" height="1200" loading="lazy" decoding="async" />
-            )}
-          </div>
-          <div class="project-copy">
-            <h2>{project.data.title}</h2>
-            <p>{project.data.tagline}</p>
-            <div class="tags">{project.data.tags.map((tag) => <span>{tag}</span>)}</div>
-            <div class="links"><a href={project.slug === 'lifelens' ? '/lifelens' : project.slug === 'applyready' ? '/applyready' : `/projects/${project.slug}`}>Read the product story <span aria-hidden="true">&rarr;</span></a>{project.data.demo && <a href={project.data.demo} target="_blank" rel="noopener noreferrer">Open live product <span aria-hidden="true">&nearr;</span></a>}</div>
-          </div>
-        </article>
-      ))}
-    </div>
+  <section class="build-principle"><p>Different problems.</p><span aria-hidden="true"></span><strong>Evidence before action.</strong><span aria-hidden="true"></span><p>The person keeps control.</p></section>
 
-    <section class="project-rule"><div><p class="eyebrow">The rule underneath both</p><h2>Reduce uncertainty. Keep the decision human.</h2></div><a href="/ai">Read the AI philosophy <span aria-hidden="true">&rarr;</span></a></section>
+  <div class="products">
+    <article class="product lifelens">
+      <div class="product-index"><span>01</span><small>Android · live</small></div>
+      <div class="visual phones"><img src="/lifelens/screen-1.png" alt="LifeLens home screen showing a private photo library" width="1080" height="1920" /><img src="/lifelens/screen-2.png" alt="LifeLens showing storage analysis in plain language" width="1080" height="1920" loading="lazy" /></div>
+      <div class="copy"><div class="name"><img src="/lifelens/icon.png" alt="" width="54" height="54" /><h2>LifeLens</h2></div><p class="thesis">Understand photo clutter without uploading the library or automating the irreversible decision.</p><dl><div><dt>Problem</dt><dd>An endless camera roll hides duplicates, clutter, and the memories worth protecting.</dd></div><div><dt>Product</dt><dd>Private, on-device photo intelligence with focused review groups and natural-language questions.</dd></div><div><dt>Boundary</dt><dd>Uncertain means protect. Similar remains review-only. Android confirms deletion.</dd></div></dl><div class="actions"><a href="/lifelens">Read the product story →</a><a href="https://play.google.com/store/apps/details?id=com.darshankansara.lifelens" target="_blank" rel="noopener noreferrer">Google Play ↗</a></div></div>
+    </article>
+
+    <article class="product applyready">
+      <div class="product-index"><span>02</span><small>Web · live</small></div>
+      <div class="visual fit"><img src="/applyready/fit.png" alt="ApplyReady comparing a generic application with evidence-led role fit" width="1200" height="1200" loading="lazy" /></div>
+      <div class="copy"><div class="name"><i aria-hidden="true">AR</i><h2>ApplyReady</h2></div><p class="thesis">Decide whether the experience supports the role before rewriting the application.</p><dl><div><dt>Problem</dt><dd>Most job tools optimize language before testing whether the underlying evidence is there.</dd></div><div><dt>Product</dt><dd>Deterministic browser-side role analysis, honest gaps, and editable application material.</dd></div><div><dt>Boundary</dt><dd>No invented experience, no account gate, no stored resume text, no outcome guarantee.</dd></div></dl><div class="actions"><a href="/applyready">Read the product story →</a><a href="https://applyready.darshankansara.com" target="_blank" rel="noopener noreferrer">Open product ↗</a></div></div>
+    </article>
+  </div>
+
+  <section class="built-close"><p class="code">The operator in the builder</p><h2>A product is another operating system: inputs, evidence, boundaries, decisions, consequences.</h2><a href="/ai">See where applied AI fits →</a></section>
+
   <style>
-    main{background:var(--paper)}.project-hero{padding:clamp(72px,9vw,110px) max(var(--pad),calc((100vw - var(--max))/2));background:var(--ink);color:#fff;display:grid;grid-template-columns:1fr .75fr;gap:clamp(48px,9vw,130px);align-items:end}.eyebrow{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:#7ebaff}.project-hero h1{font-size:clamp(3.1rem,5.2vw,5rem);line-height:.96;letter-spacing:-.04em;color:#fff;max-width:10ch;margin:26px 0 0}.project-hero>p{font-family:var(--font-display);font-size:clamp(1.08rem,1.8vw,1.32rem);line-height:1.55;color:#aebdd0;max-width:580px}.project-list{width:min(var(--max),calc(100% - 2 * var(--pad)));margin:auto}.project-list article{display:grid;grid-template-columns:190px 1fr;gap:clamp(34px,7vw,96px);padding:clamp(62px,7vw,88px) 0;border-bottom:1px solid var(--line)}.project-index{display:flex;gap:14px;font-family:var(--font-mono);font-size:.64rem;text-transform:uppercase;color:var(--muted);padding-top:8px}.project-index span:first-child{color:var(--azure)}.project-copy{max-width:850px}.project-copy h2{font-size:clamp(2.8rem,4.6vw,4.4rem);line-height:.95;letter-spacing:-.04em;margin:0 0 25px}.project-copy>p{font-family:var(--font-display);font-size:clamp(1.08rem,1.8vw,1.35rem);line-height:1.5;color:#40536b;max-width:34em}.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}.tags span{padding:7px 10px;border:1px solid var(--line);font-family:var(--font-mono);font-size:.6rem;text-transform:uppercase;color:var(--muted)}.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}.links a{padding:13px 17px;border:1px solid var(--ink);font-weight:700;color:var(--ink)}.links a:first-child{background:var(--ink);color:#fff}.project-rule{padding:clamp(70px,8vw,96px) max(var(--pad),calc((100vw - var(--max))/2));background:#10233e;color:#fff;display:flex;align-items:end;justify-content:space-between;gap:60px}.project-rule h2{font-size:clamp(2.2rem,3.8vw,3.5rem);line-height:1.05;letter-spacing:-.035em;color:#fff;max-width:16ch;margin:22px 0 0}.project-rule>a{color:#8bc2ff;font-weight:700;white-space:nowrap}@media(max-width:720px){.project-hero{grid-template-columns:1fr}.project-list article{grid-template-columns:1fr;gap:28px}.project-index{padding:0}.links{flex-direction:column}.links a{text-align:center}.project-rule{align-items:flex-start;flex-direction:column;gap:30px}}
-  </style>
-  <style>
-    :global(body),main{background:var(--ink);color:var(--text)}
-    .project-hero{min-height:62vh;background:transparent;color:var(--text);border-bottom:1px solid var(--line)}
-    .eyebrow{color:var(--gold);letter-spacing:.08em}.project-hero h1{color:var(--paper);font-size:clamp(3.5rem,7vw,7rem);line-height:.87;letter-spacing:0;font-weight:400}.project-hero>p{font-family:var(--font-sans);color:var(--muted)}
-    .project-list article{position:relative;grid-template-columns:var(--rail) minmax(260px,.72fr) 1fr;border-color:var(--line);padding:clamp(70px,9vw,118px) 0}.project-list article::after{content:"";position:absolute;right:0;top:0;width:22%;height:1px;background:var(--gold)}
-    .project-visual{height:440px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;border:1px solid var(--line);background:var(--surface)}.project-visual img{display:block;max-width:100%;height:auto}.project-visual.lifelens img{width:72%;transform:translateY(22%);box-shadow:0 20px 50px rgba(0,0,0,.35)}.project-visual.applyready{height:auto;align-items:center;padding:18px;background:var(--paper)}.project-visual.applyready img{width:100%}
-    .project-index{color:var(--dim)}.project-index span:first-child{color:var(--gold)}.project-copy h2{color:var(--paper);font-size:clamp(3rem,6vw,6rem);font-weight:400;letter-spacing:0}.project-copy>p{font-family:var(--font-sans);color:var(--muted)}
-    .tags span{border-color:var(--line);color:var(--dim)}.links a{border-color:var(--line);color:var(--paper);font-weight:500}.links a:first-child{background:var(--paper);color:var(--ink)}
-    .project-rule{background:transparent;color:var(--text);border-top:1px solid var(--line)}.project-rule h2{color:var(--paper);font-weight:400;letter-spacing:0}.project-rule a{border-color:var(--line);color:var(--azure-bright)}
-    @media(max-width:1000px){.project-list article{grid-template-columns:var(--rail) 1fr}.project-copy{grid-column:2}.project-visual{grid-column:2}}
-    @media(max-width:760px){.project-hero{min-height:auto}.project-list article{grid-template-columns:1fr}.project-copy,.project-visual{grid-column:auto}.project-visual{height:390px}}
+    :global(body),:global(main){background:var(--ink);color:var(--text)}.code,.product-index,.copy dt,.visual::after{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}.code{color:var(--gold)}.built-hero,.build-principle,.products,.built-close>*{width:min(var(--max),calc(100% - 2 * var(--pad)));margin-inline:auto}.built-hero{min-height:calc(68svh - 100px);padding-block:var(--section);display:grid;grid-template-columns:var(--rail) 1fr;gap:var(--gutter);align-items:end;border-bottom:1px solid var(--line)}.built-hero h1{color:var(--paper);font-size:clamp(3.4rem,5.5vw,5.5rem);font-weight:400;line-height:.96}.built-hero div>p{max-width:58ch;color:var(--muted);font-size:1.08rem}.build-principle{min-height:108px;display:grid;grid-template-columns:auto 1fr auto 1fr auto;gap:20px;align-items:center;color:var(--dim);font: .64rem var(--font-mono);text-transform:uppercase;border-bottom:1px solid var(--line)}.build-principle span{height:1px;background:var(--line)}.build-principle strong{color:var(--gold);font-weight:500}.build-principle p{margin:0}.product{display:grid;grid-template-columns:var(--rail) minmax(300px,.92fr) 1.08fr;gap:var(--gutter);padding:clamp(72px,9vw,118px) 0;border-bottom:1px solid var(--line)}.product-index{display:flex;flex-direction:column;gap:8px;color:var(--dim)}.product-index span{color:var(--gold)}.visual{position:relative;min-height:570px;overflow:hidden;border:1px solid var(--line)}.phones{background:linear-gradient(150deg,rgba(77,154,235,.13),rgba(198,161,90,.05))}.phones img{position:absolute;width:52%;height:auto;box-shadow:0 24px 64px rgba(0,0,0,.42)}.phones img:first-child{left:5%;top:12%}.phones img:last-child{right:4%;top:25%}.fit{display:grid;place-items:center;padding:28px;background:var(--paper)}.fit img{width:100%;height:auto;box-shadow:0 16px 48px rgba(8,17,31,.2)}.copy{align-self:center}.name{display:flex;align-items:center;gap:17px}.name img,.name i{width:54px;height:54px}.name img{border-radius:8px}.name i{display:grid;place-items:center;background:var(--paper);color:var(--ink);font:normal .7rem var(--font-mono)}.name h2,.built-close h2{margin:0;color:var(--paper);font-size:clamp(2.7rem,4.7vw,4.5rem);font-weight:400}.thesis{margin:27px 0;color:var(--azure-bright);font-family:var(--font-display);font-size:clamp(1.25rem,2vw,1.65rem);line-height:1.38}.copy dl{margin:0;border-top:1px solid var(--line)}.copy dl div{display:grid;grid-template-columns:92px 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}.copy dt{color:var(--gold)}.copy dd{margin:0;color:var(--muted);font-size:.83rem}.actions{display:flex;flex-wrap:wrap;gap:22px;margin-top:28px}.actions a{color:var(--azure-bright);font-size:.84rem}.actions a:first-child{color:var(--paper)}.built-close{padding-block:var(--section);border-top:1px solid var(--line)}.built-close h2{max-width:19ch;margin-top:26px}.built-close a{display:inline-flex;margin-top:24px;color:var(--azure-bright)}
+    @media(max-width:1000px){.product{grid-template-columns:110px 1fr}.visual,.copy{grid-column:2}.visual{min-height:500px}.copy{padding-top:16px}}@media(max-width:650px){.built-hero{min-height:auto;grid-template-columns:1fr;gap:20px}.built-hero h1{font-size:clamp(3rem,13vw,3.8rem)}.build-principle{grid-template-columns:1fr;gap:9px;padding-block:22px}.build-principle span{display:none}.product{grid-template-columns:1fr;gap:22px}.visual,.copy{grid-column:auto}.product-index{flex-direction:row}.visual{min-height:450px}.copy dl div{grid-template-columns:80px 1fr}}
   </style>
 </Base>
